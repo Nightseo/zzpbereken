@@ -1,0 +1,32 @@
+{
+  "name": "pengekalkulator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate:calculator": "tsx scripts/generate-calculator.ts",
+    "generate:content": "tsx scripts/generate-content.ts",
+    "generate:all": "tsx scripts/generate-all.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.67.0",
+    "dotenv": "^17.2.3",
+    "next": "^14.2.0",
+    "openai": "^6.7.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "tsx": "^4.20.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.0.0"
+  }
+}

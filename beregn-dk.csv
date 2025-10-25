@@ -1,0 +1,176 @@
+#;Keyword;Difficulty;Volume;CPC;CPS
+1;beregn løn efter skat;7;4400;0.60;1.27
+2;beregn løn;7;2500;1.10;1.31
+3;beregn termin;0;2400;0.05;1.3
+4;beregn gennemsnit;1;1100;;1.26
+5;beregn udbetalt løn;1;1000;0.70;1.26
+6;beregn terminsdato;0;900;0.04;1.73
+7;beregn pace;0;700;0.10;
+8;beregn månedsløn efter skat;2;600;5.00;
+9;beregn løberute;8;500;0.45;1.29
+10;beregn km fra sted til sted;7;500;0.04;1.1
+11;beregn procent;2;450;;1.15
+12;beregn din løn efter skat;6;400;1.80;1.21
+13;beregn kvadratmeter;0;400;;1.35
+14;beregn din løn;3;350;0.70;1.32
+15;beregn udbetalt løn skat;5;350;1.90;1.32
+16;beregn tid ud fra hastighed og distance;0;300;;
+17;beregn hvad du får udbetalt;6;300;;1.24
+18;beregn kubikmeter;0;300;0.06;1.4
+19;beregn ascendant;0;250;0.01;1.77
+20;beregn løbehastighed;0;250;0.20;1.24
+21;beregn min løn;7;250;0.45;1.51
+22;beregn kilopris;0;200;;
+23;beregn gennemsnit ects;0;200;;1.35
+24;beregn kondital;1;200;4.50;1.58
+25;beregn renters rente;0;200;1.10;1.26
+26;beregn nettoløn;1;200;1.00;1.17
+27;beregn dit gennemsnit;0;200;;1.31
+28;beregn fleksjob;3;200;0.20;1.26
+29;beregn pris pr km;0;200;;
+30;beregn vinkel i retvinklet trekant;0;150;0.15;0.91
+31;beregn benzinforbrug;0;150;4.50;1.5
+32;beregn rumfang;0;150;3.00;1.07
+33;beregn efter skat;1;150;1.50;1.38
+34;beregn løn før skat;1;150;;
+35;beregn udbetaling;11;150;;1.07
+36;beregn karaktergennemsnit;1;150;;1.35
+37;beregn løbetid;0;150;0.25;1.48
+38;beregn procentvis stigning;2;150;;1.23
+39;beregn genstande;0;150;;1.68
+40;beregn hastighed;0;150;;1.12
+41;beregn stigning i procent;2;150;;1.34
+42;beregn skat af løn;11;150;;1.33
+43;beregn areal af cirkel;0;150;;1.06
+44;beregn min løn efter skat;6;100;;
+45;beregn dækningsbidrag;0;100;4.00;1.08
+46;beregn opsparing;1;100;0.90;
+47;beregn fleksjob løn;4;100;;1.59
+48;beregn vægtet gennemsnit;0;100;;1.75
+49;beregn termin ivf;1;100;1.20;
+50;beregn ladmeter;0;100;;
+51;beregn kalorier i opskrift;0;100;16.00;1.76
+52;beregn procesrente;0;100;1.30;
+53;beregn bmr;0;100;0.01;
+54;beregn graviditet;0;100;0.15;
+55;beregn areal af firkant;0;100;;1.18
+56;beregn graviditetsuge;0;100;0.25;
+57;beregn m2 gulv;0;90;0.60;
+58;beregn m2;0;90;;
+59;beregn sejlrute;0;90;0.45;1.48
+60;beregn procent stigning;2;90;;
+61;beregn termin ud fra ægløsning;1;90;0.40;
+62;beregn inflation;2;80;;
+63;beregn rentes rente;0;80;7.00;
+64;beregn udbetaling efter skat;6;80;;
+65;beregn husleje;0;80;0.80;1.49
+66;beregn vægttab;0;80;0.08;1.41
+67;beregn dit ligevægtsindtag;1;80;0.03;
+68;beregn hvor meget du får udbetalt;10;80;;
+69;beregn indkomst efter skat;2;80;;
+70;beregn løn skat;6;80;0.90;1.23
+71;beregn løbe pace;0;80;;
+72;beregn hvad jeg får udbetalt;12;70;;
+73;beregn omkreds af cirkel online;0;70;;
+74;beregn basalstofskifte;0;70;0.02;
+75;beregn forskel i procent;0;70;;1.39
+76;beregn afstand;3;70;0.04;1.11
+77;beregn tid;0;70;;0.95
+78;beregn omkreds af firkant;0;70;;
+79;beregn kvm;0;70;;
+80;beregn procentvis ændring;0;60;;1.42
+81;beregn procent af et beløb;0;60;;
+82;beregn halvmarathon tid;0;60;;
+83;beregn timeløn deltid;0;60;;
+84;beregn hvor lang tid turen tager;0;60;;1.23
+85;beregn udbetalt;7;60;;
+86;beregn løn i fleksjob;4;60;;
+87;beregn snit;2;60;;1.19
+88;beregn næringsindhold i opskrift;0;60;;
+89;beregn kg pris;0;60;;
+90;beregn alder ud fra fødselsdato;0;50;;
+91;beregn løn udbetalt;1;50;1.50;
+92;beregn kobberbryllup;0;50;;
+93;beregn løn efter skat og pension;7;50;;
+94;beregn garnforbrug;0;50;0.20;
+95;beregn flexløn;5;50;;
+96;beregn pulszoner;0;50;;
+97;beregn gennemsnit uni;0;50;;1.13
+98;beregn fart;0;50;;1.28
+99;beregn idealvægt;0;50;0.04;2.14
+100;beregn brændstof forbrug;0;50;;
+101;beregn marathon tid;0;50;;
+102;beregn løn fleksjob;4;40;;
+103;beregn deltidsløn;2;40;;
+104;beregn ampere;0;40;;
+105;beregn alkoholprocent;0;40;;
+106;beregn watt;1;40;;
+107;beregn månedsløn deltid;0;40;;
+108;beregn morarente;0;40;0.80;
+109;beregn feriedage;0;40;0.07;
+110;beregn fald i procent;0;40;;
+111;beregn dit snit;1;40;;1.35
+112;beregn termin ægløsning;1;40;;
+113;beregn vo2 max;0;40;;
+114;beregn fleksløn;4;40;;
+115;beregn spændingsfald;0;40;;2
+116;beregn flexjob;4;40;;
+117;beregn benzin;0;40;;1.39
+118;beregn din termin;1;40;0.20;
+119;beregn cirkel areal;0;40;;
+120;beregn literpris;0;40;;
+121;beregn kcal i opskrift;0;30;;
+122;beregn procent forskel;1;30;;
+123;beregn alder ud fra fødselsdato excel;0;30;;
+124;beregn benzinforbrug pr km;0;30;;
+125;beregn benzin forbrug;0;30;;1.5
+126;beregn distance;1;30;;
+127;beregn flexleasing;0;30;0.25;
+128;beregn fleksydelse;2;30;;1.51
+129;beregn gårute;10;30;;
+130;beregn procentdel;1;30;;1.04
+131;beregn pris uden moms;2;30;0.70;
+132;beregn løn deltid;0;30;;
+133;beregn kvm gulv;0;30;;
+134;beregn mit snit;2;20;;0.96
+135;beregn besparelse i procent;5;20;;
+136;beregn prisstigning i procent;1;20;;
+137;beregn moms af beløb;5;20;0.50;
+138;beregn promille fald;0;20;;
+139;beregn benzin rute;0;20;;
+140;beregn drikkevarer til fest;0;20;;
+141;beregn vækst i procent;0;20;;
+142;beregn løb;0;20;;
+143;beregn procentvis forskel;0;20;;
+144;beregn km pris;0;20;;
+145;beregn ferie;0;20;2.50;
+146;beregn rabat i procent;1;20;;
+147;beregn solceller;1;20;1.30;
+148;beregn brændstofforbrug;0;20;;
+149;beregn pris med moms;2;20;0.80;
+150;beregn lønudbetaling;7;20;2.50;
+151;beregn stjernetegn;0;20;;
+152;beregn udbetaling af løn;3;20;1.50;
+153;beregn areal cirkel;0;20;;
+154;beregn lønstigning;1;20;2.50;
+155;beregn diesel forbrug;0;20;;
+156;beregn flexjob løn;4;20;;
+157;beregn benzin pris;0;20;;
+158;beregn nutidsværdi;0;20;;
+159;beregn din udbetalte løn;1;20;1.40;
+160;beregn indlånsrente;2;10;0.45;
+161;beregn procent af tal;0;10;;
+162;løn efter skat beregn;2;10;;
+163;beregn gennemsnit karakter;2;10;;
+164;beregn kvadratmeter gulv;0;10;0.50;
+165;beregn inflation formel;2;10;;
+166;beregn kvadratmeter online;0;10;;
+167;beregn benzinpris;0;10;;
+168;beregn kondital ud fra puls;0;10;;
+169;beregn procent af beløb;0;10;;
+170;beregn procesrenter;0;10;;
+171;beregn kalorie ligevægt;0;;0.03;
+172;beregn karaktergennemsnit ects;0;;;
+173;beregn pris for kørsel;2;;;
+174;beregn procentdel af tal;0;;;
+175;beregn acceleration;0;;;1.74
