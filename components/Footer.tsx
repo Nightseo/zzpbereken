@@ -46,10 +46,10 @@ export default function Footer() {
           <div>
             <div className="text-sm font-bold text-white uppercase tracking-wider mb-4">Information</div>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/#features" className="text-gray-400 hover:text-primary-400 transition-colors">Om PengeKalkulator</Link></li>
-              <li><Link href="/" className="text-gray-400 hover:text-primary-400 transition-colors">Kontakt os</Link></li>
-              <li><Link href="/" className="text-gray-400 hover:text-primary-400 transition-colors">Privatlivspolitik</Link></li>
-              <li><Link href="/" className="text-gray-400 hover:text-primary-400 transition-colors">Vilkår & Betingelser</Link></li>
+              <li><Link href="/om-os" className="text-gray-400 hover:text-primary-400 transition-colors">Om PengeKalkulator</Link></li>
+              <li><Link href="/om-os#kontakt" className="text-gray-400 hover:text-primary-400 transition-colors">Kontakt os</Link></li>
+              <li><Link href="/privatlivspolitik" className="text-gray-400 hover:text-primary-400 transition-colors">Privatlivspolitik</Link></li>
+              <li><Link href="/cookies" className="text-gray-400 hover:text-primary-400 transition-colors">Cookiepolitik</Link></li>
             </ul>
           </div>
         </div>
