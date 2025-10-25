@@ -63,10 +63,10 @@ export default function KeywordsPage() {
             return {
               ...item,
               isGenerated: result.isGenerated,
-              status: result.isGenerated ? 'done' : 'pending'
+              status: (result.isGenerated ? 'done' : 'pending') as 'pending' | 'in-progress' | 'done'
             }
           } catch (error) {
-            return { ...item, isGenerated: false }
+            return { ...item, isGenerated: false, status: 'pending' as 'pending' | 'in-progress' | 'done' }
           }
         })
       )
