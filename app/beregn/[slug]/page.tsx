@@ -94,9 +94,38 @@ export default async function CalculatorPage({ params }: PageProps) {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               {calculator.metadata.h1 || `Beregn ${calculator.metadata.keywords[0]}`}
             </h1>
-            <p className="text-base md:text-xl text-gray-600 max-w-3xl">
+            <p className="text-base md:text-xl text-gray-600 max-w-3xl mb-4">
               {calculator.metadata.excerpt}
             </p>
+
+            {/* Author and Publication Info */}
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span>
+                  Creado por:{' '}
+                  <Link href="/om-os" className="text-primary-600 hover:text-primary-700 font-medium">
+                    PengeKalkulator
+                  </Link>
+                </span>
+              </div>
+              <span className="text-gray-400">•</span>
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <time dateTime={calculator.generatedAt}>
+                  Publicado:{' '}
+                  {new Date(calculator.generatedAt).toLocaleDateString('da-DK', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+              </div>
+            </div>
           </div>
         </div>
 
