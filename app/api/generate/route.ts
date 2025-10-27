@@ -5,6 +5,11 @@ import { promisify } from 'util'
 const execAsync = promisify(exec)
 
 export async function POST(request: NextRequest) {
+  // Bloquear en producción
+  if (process.env.NODE_ENV === 'production') {
+    return new NextResponse(null, { status: 404 })
+  }
+
   try {
     const { slug, type } = await request.json()
 

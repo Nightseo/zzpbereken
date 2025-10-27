@@ -9,6 +9,8 @@ export function middleware(request: NextRequest) {
     '/keywords',
     '/api/generate-calculator',
     '/api/generate-content',
+    '/api/generate',
+    '/api/check-calculator',
   ]
 
   // Verificar si estamos en producción
@@ -28,5 +30,7 @@ export const config = {
     '/keywords/:path*',
     '/api/generate-calculator/:path*',
     '/api/generate-content/:path*',
+    '/api/generate/:path*',
+    '/api/check-calculator/:path*',
   ]
 }

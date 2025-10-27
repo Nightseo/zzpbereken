@@ -3,6 +3,11 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 export async function POST(request: NextRequest) {
+  // Bloquear en producción
+  if (process.env.NODE_ENV === 'production') {
+    return new NextResponse(null, { status: 404 })
+  }
+
   try {
     const { slug } = await request.json()
 
