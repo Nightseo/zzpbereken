@@ -14,22 +14,18 @@ export default function Header() {
   const calcCloseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    const checkCalculators = async () => {
-      const existing = []
-      for (const calc of keywordsConfig) {
-        try {
-          const response = await fetch(`/api/check-calculator?slug=${calc.slug}`)
-          const data = await response.json()
-          if (data.exists) {
-            existing.push(calc)
-          }
-        } catch (error) {
-          console.error(`Error checking calculator ${calc.slug}:`, error)
-        }
+    const loadCalculators = async () => {
+      try {
+        const response = await fetch('/calculators-list.json')
+        const calculators = await response.json()
+        setExistingCalculators(calculators)
+      } catch (error) {
+        console.error('Error loading calculators list:', error)
+        // Fallback: usar todas las calculadoras del config
+        setExistingCalculators(keywordsConfig)
       }
-      setExistingCalculators(existing)
     }
-    checkCalculators()
+    loadCalculators()
   }, [])
 
   const latestCalculators = [...existingCalculators]

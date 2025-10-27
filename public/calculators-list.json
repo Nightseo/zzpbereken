@@ -1,0 +1,37 @@
+[
+  {
+    "id": 40,
+    "slug": "voorrijkosten-zzp",
+    "keyword": "voorrijkosten berekenen zzp",
+    "category": "Kosten",
+    "url": "/bereken/voorrijkosten-zzp"
+  },
+  {
+    "id": 41,
+    "slug": "kinderalimentatie-zzp",
+    "keyword": "kinderalimentatie berekenen zzp",
+    "category": "Financiën",
+    "url": "/bereken/kinderalimentatie-zzp"
+  },
+  {
+    "id": 42,
+    "slug": "zakelijke-lening-zzp",
+    "keyword": "zakelijke lening zzp berekenen",
+    "category": "Financiën",
+    "url": "/bereken/zakelijke-lening-zzp"
+  },
+  {
+    "id": 43,
+    "slug": "parttime-zzp",
+    "keyword": "parttime zzp berekenen",
+    "category": "Belastingen",
+    "url": "/bereken/parttime-zzp"
+  },
+  {
+    "id": 44,
+    "slug": "stakingswinst-eenmanszaak",
+    "keyword": "stakingswinst eenmanszaak berekenen",
+    "category": "Belastingen",
+    "url": "/bereken/stakingswinst-eenmanszaak"
+  }
+]
