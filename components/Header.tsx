@@ -93,10 +93,8 @@ export default function Header() {
                       className="block px-4 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all border-b border-gray-100 last:border-b-0"
                     >
                       <div className="font-semibold">{calc.keyword}</div>
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="mt-1">
                         <span className="text-xs text-gray-500">{calc.category}</span>
-                        <span className="text-xs text-gray-400">•</span>
-                        <span className="text-xs text-gray-500">{calc.volume >= 1000 ? `${(calc.volume / 1000).toFixed(1)}K` : calc.volume} zoekvolume</span>
                       </div>
                     </Link>
                   ))}
