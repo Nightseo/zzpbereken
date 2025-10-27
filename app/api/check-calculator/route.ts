@@ -2,6 +2,36 @@ import { NextRequest, NextResponse } from 'next/server'
 import * as fs from 'fs'
 import * as path from 'path'
 
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const slug = searchParams.get('slug')
+
+    if (!slug) {
+      return NextResponse.json({ error: 'Slug is required' }, { status: 400 })
+    }
+
+    const calculatorPath = path.join(process.cwd(), 'calculators-data', `${slug}.ts`)
+    const exists = fs.existsSync(calculatorPath)
+
+    let hasContent = false
+    if (exists) {
+      const fileContent = fs.readFileSync(calculatorPath, 'utf-8')
+      hasContent = !fileContent.includes('Pending OpenAI generation')
+    }
+
+    return NextResponse.json({
+      exists: exists && hasContent
+    })
+
+  } catch (error: any) {
+    console.error('Check calculator error:', error)
+    return NextResponse.json({
+      error: error.message
+    }, { status: 500 })
+  }
+}
+
 export async function POST(request: NextRequest) {
   // Bloquear en producción
   if (process.env.NODE_ENV === 'production') {

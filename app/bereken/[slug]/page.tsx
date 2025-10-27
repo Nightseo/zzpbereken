@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import CalculatorClient from '@/components/CalculatorClient'
 import { CalculatorData } from '@/types/calculator'
 import { getCategoryByName } from '@/lib/categories'
 import { getGeneratedCalculators, getCalculatorBySlug } from '@/lib/generated-calculators'
@@ -155,9 +156,10 @@ export default async function CalculatorPage({ params }: PageProps) {
               </div>
 
               <div className="bg-white border-2 border-gray-200 p-4 md:p-6 lg:p-8">
-                <div
-                  id="calculator-container"
-                  dangerouslySetInnerHTML={{ __html: calculator.calculator.html }}
+                <CalculatorClient
+                  html={calculator.calculator.html}
+                  logic={calculator.calculator.logic}
+                  styles={calculator.calculator.styles}
                 />
               </div>
 
@@ -331,24 +333,6 @@ export default async function CalculatorPage({ params }: PageProps) {
         </div>
       </main>
       <Footer />
-
-      {/* Inject Calculator JavaScript */}
-      {calculator.calculator.logic && (
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                ${calculator.calculator.logic}
-              })();
-            `,
-          }}
-        />
-      )}
-
-      {/* Inject Custom Styles if any */}
-      {calculator.calculator.styles && (
-        <style dangerouslySetInnerHTML={{ __html: calculator.calculator.styles }} />
-      )}
 
       {/* JSON-LD Structured Data Schemas */}
       <script

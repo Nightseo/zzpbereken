@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { categories } from '@/lib/categories'
 import { keywordsConfig } from '@/scripts/keywords-config'
 
@@ -9,11 +9,30 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [categoriesOpen, setCategoriesOpen] = useState(false)
   const [calculatorsOpen, setCalculatorsOpen] = useState(false)
+  const [existingCalculators, setExistingCalculators] = useState<typeof keywordsConfig>([])
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const calcCloseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Get latest 5 calculators
-  const latestCalculators = [...keywordsConfig]
+  useEffect(() => {
+    const checkCalculators = async () => {
+      const existing = []
+      for (const calc of keywordsConfig) {
+        try {
+          const response = await fetch(`/api/check-calculator?slug=${calc.slug}`)
+          const data = await response.json()
+          if (data.exists) {
+            existing.push(calc)
+          }
+        } catch (error) {
+          console.error(`Error checking calculator ${calc.slug}:`, error)
+        }
+      }
+      setExistingCalculators(existing)
+    }
+    checkCalculators()
+  }, [])
+
+  const latestCalculators = [...existingCalculators]
     .sort((a, b) => b.id - a.id)
     .slice(0, 5)
 

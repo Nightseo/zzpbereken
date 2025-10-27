@@ -303,11 +303,6 @@ export default function CookiesPage() {
                       → Privacybeleid
                     </Link>
                   </li>
-                  <li>
-                    <Link href="/voorwaarden" className="text-primary-600 hover:text-primary-700 underline">
-                      → Algemene Voorwaarden
-                    </Link>
-                  </li>
                 </ul>
               </div>
             </section>
