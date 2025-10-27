@@ -26,11 +26,11 @@ export default function CalculatorLayout({
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <nav className="flex items-center space-x-2 text-sm text-gray-600">
-              <Link href="/" className="hover:text-primary-600 transition-colors">Forside</Link>
+              <Link href="/" className="hover:text-primary-600 transition-colors">Home</Link>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-              <Link href="/#kalkulatorer" className="hover:text-primary-600 transition-colors">Kalkulatorer</Link>
+              <Link href="/#calculators" className="hover:text-primary-600 transition-colors">Calculators</Link>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/keywords/', '/private/'],
     },
-    sitemap: 'https://pengekalkulator.com/sitemap.xml',
+    sitemap: 'https://zzpbereken.com/sitemap.xml',
   }
 }

@@ -1,0 +1,485 @@
+// Configuración de keywords para generación de calculadoras
+// 1 URL = 1 Search Intent único (NO variaciones)
+
+export interface KeywordConfig {
+  id: number
+  url: string
+  slug: string
+  keyword: string
+  volume: number
+  difficulty: string
+  kwCount: number
+  priority: 'ALTA' | 'MEDIA' | 'BAJA'
+  description: string
+  category: string
+}
+
+export const keywordsConfig: KeywordConfig[] = [
+  // ===== BELASTINGEN (Impuestos) =====
+  {
+    id: 1,
+    url: '/bereken/inkomstenbelasting',
+    slug: 'inkomstenbelasting',
+    keyword: 'inkomstenbelasting berekenen',
+    volume: 8000,
+    difficulty: '6',
+    kwCount: 15,
+    priority: 'ALTA',
+    description: 'Bereken je inkomstenbelasting (IB) als ZZP\'er. Inclusief schijven, heffingskortingen en zelfstandigenaftrek voor 2025.',
+    category: 'Belasting'
+  },
+  {
+    id: 2,
+    url: '/bereken/btw',
+    slug: 'btw',
+    keyword: 'btw berekenen',
+    volume: 5200,
+    difficulty: '4',
+    kwCount: 4,
+    priority: 'ALTA',
+    description: 'Bereken BTW snel en nauwkeurig. Inclusief en exclusief BTW voor 21% en 9% tarief.',
+    category: 'Belasting'
+  },
+  {
+    id: 3,
+    url: '/bereken/zelfstandigenaftrek',
+    slug: 'zelfstandigenaftrek',
+    keyword: 'zelfstandigenaftrek berekenen',
+    volume: 2200,
+    difficulty: '3',
+    kwCount: 3,
+    priority: 'ALTA',
+    description: 'Bereken je zelfstandigenaftrek. Controleer of je voldoet aan het urencriterium (1225 uur).',
+    category: 'Belasting'
+  },
+  {
+    id: 4,
+    url: '/bereken/belastbaar-inkomen',
+    slug: 'belastbaar-inkomen',
+    keyword: 'belastbaar inkomen berekenen',
+    volume: 1800,
+    difficulty: '4',
+    kwCount: 2,
+    priority: 'MEDIA',
+    description: 'Bereken je belastbaar inkomen na aftrek van kosten en aftrekposten.',
+    category: 'Belasting'
+  },
+  {
+    id: 5,
+    url: '/bereken/verzamelinkomen',
+    slug: 'verzamelinkomen',
+    keyword: 'verzamelinkomen berekenen',
+    volume: 850,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken je verzamelinkomen uit meerdere bronnen voor de belastingaangifte.',
+    category: 'Belasting'
+  },
+  {
+    id: 6,
+    url: '/bereken/belastingdruk',
+    slug: 'belastingdruk',
+    keyword: 'belastingdruk berekenen',
+    volume: 720,
+    difficulty: '2',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken je effectieve belastingdruk als percentage van je inkomen.',
+    category: 'Belasting'
+  },
+  {
+    id: 7,
+    url: '/bereken/loonheffing-zzp',
+    slug: 'loonheffing-zzp',
+    keyword: 'loonheffing berekenen',
+    volume: 680,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'BAJA',
+    description: 'Bereken loonheffing voor ZZP\'ers met personeel.',
+    category: 'Belasting'
+  },
+  {
+    id: 8,
+    url: '/bereken/zvw-bijdrage',
+    slug: 'zvw-bijdrage',
+    keyword: 'zvw berekenen',
+    volume: 640,
+    difficulty: '2',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken je ZVW-bijdrage (zorgverzekeringswet) als ZZP\'er.',
+    category: 'Belasting'
+  },
+  {
+    id: 9,
+    url: '/bereken/bijtelling-auto',
+    slug: 'bijtelling-auto',
+    keyword: 'bijtelling berekenen',
+    volume: 950,
+    difficulty: '3',
+    kwCount: 4,
+    priority: 'MEDIA',
+    description: 'Bereken de bijtelling voor een zakelijke auto als ondernemer.',
+    category: 'Belasting'
+  },
+  {
+    id: 10,
+    url: '/bereken/fiscale-winst',
+    slug: 'fiscale-winst',
+    keyword: 'fiscale winst berekenen',
+    volume: 820,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken je fiscale winst voor de belastingaangifte na aftrek fiscale faciliteiten.',
+    category: 'Belasting'
+  },
+  {
+    id: 11,
+    url: '/bereken/stakingswinst',
+    slug: 'stakingswinst',
+    keyword: 'stakingswinst berekenen',
+    volume: 650,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'BAJA',
+    description: 'Bereken de stakingswinst en belasting bij het stoppen van je eenmanszaak.',
+    category: 'Belasting'
+  },
+  {
+    id: 12,
+    url: '/bereken/zzp-loondienst-belasting',
+    slug: 'zzp-loondienst-belasting',
+    keyword: 'zzp naast loondienst belasting berekenen',
+    volume: 1100,
+    difficulty: '4',
+    kwCount: 5,
+    priority: 'MEDIA',
+    description: 'Bereken je totale belasting als je ZZP combineert met werk in loondienst.',
+    category: 'Belasting'
+  },
+
+  // ===== INKOMEN & SALARIS (Ingresos) =====
+  {
+    id: 13,
+    url: '/bereken/netto-inkomen',
+    slug: 'netto-inkomen',
+    keyword: 'netto inkomen berekenen',
+    volume: 4800,
+    difficulty: '5',
+    kwCount: 18,
+    priority: 'ALTA',
+    description: 'Bereken wat je netto overhoudt als ZZP\'er na belasting, kosten en premies.',
+    category: 'Financiën'
+  },
+  {
+    id: 14,
+    url: '/bereken/bruto-inkomen',
+    slug: 'bruto-inkomen',
+    keyword: 'bruto inkomen berekenen',
+    volume: 3200,
+    difficulty: '4',
+    kwCount: 8,
+    priority: 'ALTA',
+    description: 'Bereken je bruto jaarinkomen als ZZP\'er voor de belastingaangifte.',
+    category: 'Financiën'
+  },
+  {
+    id: 15,
+    url: '/bereken/bruto-netto',
+    slug: 'bruto-netto',
+    keyword: 'bruto netto berekenen',
+    volume: 2400,
+    difficulty: '3',
+    kwCount: 4,
+    priority: 'ALTA',
+    description: 'Converteer bruto naar netto of netto naar bruto voor ZZP\'ers.',
+    category: 'Financiën'
+  },
+  {
+    id: 16,
+    url: '/bereken/jaarinkomen',
+    slug: 'jaarinkomen',
+    keyword: 'jaarinkomen berekenen',
+    volume: 1600,
+    difficulty: '3',
+    kwCount: 3,
+    priority: 'MEDIA',
+    description: 'Bereken je totale jaarinkomen uit alle bronnen.',
+    category: 'Financiën'
+  },
+  {
+    id: 17,
+    url: '/bereken/toetsingsinkomen',
+    slug: 'toetsingsinkomen',
+    keyword: 'toetsingsinkomen berekenen',
+    volume: 1100,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken je toetsingsinkomen voor hypotheek of toeslagen als ZZP\'er.',
+    category: 'Financiën'
+  },
+
+  // ===== TARIEF & OMZET (Tarifas y Facturación) =====
+  {
+    id: 18,
+    url: '/bereken/uurloon',
+    slug: 'uurloon',
+    keyword: 'uurloon berekenen',
+    volume: 6500,
+    difficulty: '5',
+    kwCount: 12,
+    priority: 'ALTA',
+    description: 'Bereken je ideale uurtarief als ZZP\'er. Inclusief alle kosten, belastingen en gewenste winst.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 19,
+    url: '/bereken/omzet',
+    slug: 'omzet',
+    keyword: 'omzet berekenen',
+    volume: 3600,
+    difficulty: '4',
+    kwCount: 5,
+    priority: 'ALTA',
+    description: 'Bereken je benodigde jaaromzet als ZZP\'er voor een gewenst netto inkomen.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 20,
+    url: '/bereken/winst',
+    slug: 'winst',
+    keyword: 'winst berekenen',
+    volume: 2400,
+    difficulty: '4',
+    kwCount: 6,
+    priority: 'ALTA',
+    description: 'Bereken je winst als ZZP\'er. Omzet minus alle kosten.',
+    category: 'Financiën'
+  },
+  {
+    id: 21,
+    url: '/bereken/netto-omzet',
+    slug: 'netto-omzet',
+    keyword: 'netto omzet berekenen',
+    volume: 1400,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken je netto omzet (exclusief BTW) als ZZP\'er.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 22,
+    url: '/bereken/freelance-tarief',
+    slug: 'freelance-tarief',
+    keyword: 'freelance tarief berekenen',
+    volume: 1200,
+    difficulty: '3',
+    kwCount: 2,
+    priority: 'MEDIA',
+    description: 'Bereken je ideale freelance uurtarief. Voor designers, developers en consultants.',
+    category: 'ZZP Administratie'
+  },
+
+  // ===== KOSTEN (Gastos) =====
+  {
+    id: 23,
+    url: '/bereken/zzp-kosten',
+    slug: 'zzp-kosten',
+    keyword: 'kosten berekenen zzp',
+    volume: 1800,
+    difficulty: '3',
+    kwCount: 2,
+    priority: 'MEDIA',
+    description: 'Bereken alle aftrekbare kosten voor je ZZP-administratie.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 24,
+    url: '/bereken/reiskosten',
+    slug: 'reiskosten',
+    keyword: 'reiskosten berekenen',
+    volume: 1400,
+    difficulty: '2',
+    kwCount: 3,
+    priority: 'MEDIA',
+    description: 'Bereken aftrekbare reiskosten voor je ZZP-administratie volgens Belastingdienst regels.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 25,
+    url: '/bereken/voorrijkosten',
+    slug: 'voorrijkosten',
+    keyword: 'voorrijkosten berekenen',
+    volume: 680,
+    difficulty: '2',
+    kwCount: 1,
+    priority: 'BAJA',
+    description: 'Bereken de vergoeding voor voorrijkosten per kilometer.',
+    category: 'ZZP Administratie'
+  },
+
+  // ===== VERZEKERINGEN & PENSIOEN (Seguros y Pensión) =====
+  {
+    id: 26,
+    url: '/bereken/aov',
+    slug: 'aov',
+    keyword: 'aov berekenen',
+    volume: 1600,
+    difficulty: '3',
+    kwCount: 5,
+    priority: 'MEDIA',
+    description: 'Bereken de premie voor een arbeidsongeschiktheidsverzekering (AOV) als ZZP\'er.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 27,
+    url: '/bereken/pensioen',
+    slug: 'pensioen',
+    keyword: 'pensioen berekenen',
+    volume: 1800,
+    difficulty: '4',
+    kwCount: 4,
+    priority: 'MEDIA',
+    description: 'Bereken hoeveel je moet sparen voor je pensioen als ZZP\'er.',
+    category: 'Financiën'
+  },
+  {
+    id: 28,
+    url: '/bereken/jaarruimte',
+    slug: 'jaarruimte',
+    keyword: 'jaarruimte berekenen',
+    volume: 600,
+    difficulty: '2',
+    kwCount: 1,
+    priority: 'BAJA',
+    description: 'Bereken je jaarruimte voor fiscaal voordelige pensioensopbouw als ZZP\'er.',
+    category: 'Financiën'
+  },
+
+  // ===== HYPOTHEEK & FINANCIERING (Hipoteca y Financiación) =====
+  {
+    id: 29,
+    url: '/bereken/hypotheek-zzp',
+    slug: 'hypotheek-zzp',
+    keyword: 'hypotheek berekenen zzp',
+    volume: 4200,
+    difficulty: '7',
+    kwCount: 28,
+    priority: 'ALTA',
+    description: 'Bereken je maximale hypotheek als ZZP\'er of ondernemer. Speciale berekening voor zelfstandigen.',
+    category: 'Financiën'
+  },
+  {
+    id: 30,
+    url: '/bereken/zakelijke-lening',
+    slug: 'zakelijke-lening',
+    keyword: 'zakelijke lening berekenen',
+    volume: 950,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken de maandlasten van een zakelijke lening voor je ZZP-onderneming.',
+    category: 'Financiën'
+  },
+
+  // ===== ONDERNEMINGSVORM (Forma legal) =====
+  {
+    id: 31,
+    url: '/bereken/bv-eenmanszaak',
+    slug: 'bv-eenmanszaak',
+    keyword: 'bv of eenmanszaak berekenen',
+    volume: 1200,
+    difficulty: '5',
+    kwCount: 5,
+    priority: 'MEDIA',
+    description: 'Vergelijk BV vs eenmanszaak. Bereken wat voordeliger is voor jouw situatie.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 32,
+    url: '/bereken/omslagpunt-bv',
+    slug: 'omslagpunt-bv',
+    keyword: 'omslagpunt bv berekenen',
+    volume: 850,
+    difficulty: '4',
+    kwCount: 1,
+    priority: 'MEDIA',
+    description: 'Bereken vanaf welke omzet een BV voordeliger is dan een eenmanszaak.',
+    category: 'ZZP Administratie'
+  },
+  {
+    id: 33,
+    url: '/bereken/ondernemersvermogen',
+    slug: 'ondernemersvermogen',
+    keyword: 'ondernemersvermogen berekenen',
+    volume: 720,
+    difficulty: '2',
+    kwCount: 1,
+    priority: 'BAJA',
+    description: 'Bereken je ondernemersvermogen voor de vermogensrendementsheffing.',
+    category: 'Belasting'
+  },
+
+  // ===== SPECIFIEKE SITUATIES =====
+  {
+    id: 34,
+    url: '/bereken/kinderalimentatie',
+    slug: 'kinderalimentatie',
+    keyword: 'kinderalimentatie berekenen',
+    volume: 680,
+    difficulty: '3',
+    kwCount: 1,
+    priority: 'BAJA',
+    description: 'Bereken kinderalimentatie op basis van je ZZP-inkomen.',
+    category: 'Financiën'
+  },
+
+  // ===== WISKUNDE & UTILITIES (Matemáticas y Utilidades) =====
+  {
+    id: 35,
+    url: '/bereken/percentage',
+    slug: 'percentage',
+    keyword: 'percentage berekenen',
+    volume: 8500,
+    difficulty: '2',
+    kwCount: 10,
+    priority: 'MEDIA',
+    description: 'Bereken percentage, procentuele stijging, daling en verschil. Handige percentagecalculator.',
+    category: 'Wiskunde'
+  },
+  {
+    id: 36,
+    url: '/bereken/eenheidsprijs',
+    slug: 'eenheidsprijs',
+    keyword: 'kiloprijs berekenen',
+    volume: 520,
+    difficulty: '0-2',
+    kwCount: 2,
+    priority: 'BAJA',
+    description: 'Vergelijk prijzen per kilo, liter of meter. Vind de beste deal.',
+    category: 'Wiskunde'
+  },
+
+  // ===== FINANCIËLE PLANNING =====
+  {
+    id: 37,
+    url: '/bereken/samengestelde-rente',
+    slug: 'samengestelde-rente',
+    keyword: 'samengestelde rente berekenen',
+    volume: 480,
+    difficulty: '2',
+    kwCount: 2,
+    priority: 'BAJA',
+    description: 'Bereken hoe je geld groeit met samengestelde rente over tijd.',
+    category: 'Financiën'
+  }
+]
+
+export function getKeywordConfig(slug: string): KeywordConfig | undefined {
+  return keywordsConfig.find(k => k.slug === slug)
+}

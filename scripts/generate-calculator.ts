@@ -15,86 +15,88 @@ const anthropic = new Anthropic({
 
 // Prompt para Claude
 function createPrompt(config: KeywordConfig): string {
-  return `Eres un experto desarrollador web especializado en crear calculadoras financieras y de negocios en HTML y JavaScript vanilla.
+  return `Je bent een expert webontwikkelaar gespecialiseerd in het maken van financiële en zakelijke calculators in HTML en vanilla JavaScript.
 
-TAREA: Crear una calculadora funcional para "${config.keyword}" en DANÉS para usuarios daneses.
+TAAK: Maak een functionele calculator voor "${config.keyword}" in het NEDERLANDS voor Nederlandse gebruikers (vooral ZZP'ers en kleine ondernemers).
 
-INFORMACIÓN DEL PROYECTO:
-- Keyword principal: ${config.keyword}
-- Volumen de búsqueda: ${config.volume}
-- Descripción: ${config.description}
-- Categoría: ${config.category}
-- Prioridad: ${config.priority}
+PROJECTINFORMATIE:
+- Hoofd keyword: ${config.keyword}
+- Zoekvolume: ${config.volume}
+- Beschrijving: ${config.description}
+- Categorie: ${config.category}
+- Prioriteit: ${config.priority}
 
-⚠️ IMPORTANTE - LEGISLACIÓN DANESA:
-- Sigue ESTRICTAMENTE la legislación danesa actual
-- Si es sobre impuestos: usa las tasas vigentes en Dinamarca (ej: moms 25%)
-- Si es sobre salarios: aplica el sistema fiscal danés (AM-bidrag, skattefradrag, etc.)
-- Si es sobre cálculos financieros: usa normas y fórmulas danesas
-- Todos los ejemplos deben ser relevantes para usuarios en Dinamarca
-- Moneda: Corona danesa (kr)
-- Formato de números: formato danés (coma para decimales, punto para miles en display)
+⚠️ BELANGRIJK - NEDERLANDSE WETGEVING:
+- Volg STRIKT de huidige Nederlandse wetgeving
+- Voor belastingen: gebruik geldende tarieven in Nederland (bijv: BTW 21% hoog tarief, 9% laag tarief)
+- Voor salarissen: pas het Nederlandse belastingsysteem toe (loonheffing, inkomstenbelasting 2025, schijven, heffingskortingen)
+- Voor ZZP: gebruik Nederlandse regels (uurtarief, omzetprognose, BTW-drempel €25.000, kleinondernemersregeling)
+- Voor financiële berekeningen: gebruik Nederlandse normen en formules
+- Alle voorbeelden moeten relevant zijn voor gebruikers in Nederland
+- Valuta: Euro (€)
+- Nummerformaat: Nederlands formaat (komma voor decimalen, punt voor duizendtallen in display)
 
-REQUISITOS TÉCNICOS:
+TECHNISCHE VEREISTEN:
 
-1. **HTML** - Usa EXCLUSIVAMENTE estas clases CSS (ya están definidas):
+1. **HTML** - Gebruik UITSLUITEND deze CSS classes (al gedefinieerd):
    - Containers: .calc-container, .calc-group
    - Labels: .calc-label
    - Inputs: .calc-input, .calc-select
-   - Input con sufijo: .calc-input-wrapper + .calc-input-suffix
-   - Botones: .calc-button, .calc-button-secondary
-   - Resultados: .calc-result-container, .calc-result-box, .calc-result-value, .calc-result-label, .calc-result-subtitle
+   - Input met suffix: .calc-input-wrapper + .calc-input-suffix
+   - Buttons: .calc-button, .calc-button-secondary
+   - Resultaten: .calc-result-container, .calc-result-box, .calc-result-value, .calc-result-label, .calc-result-subtitle
    - Breakdown: .calc-breakdown, .calc-breakdown-item, .calc-breakdown-label, .calc-breakdown-value
-   - Estados: .calc-error, .calc-help, .calc-loading
+   - States: .calc-error, .calc-help, .calc-loading
 
 2. **JavaScript**:
-   - Vanilla JS puro (sin frameworks)
-   - Funcional y sin errores
-   - Usar addEventListener para eventos
-   - Formatear números en formato danés (toLocaleString('da-DK'))
-   - Validación de inputs
-   - Mostrar resultados con breakdown detallado
+   - Pure vanilla JS (geen frameworks)
+   - Functioneel en zonder fouten
+   - Gebruik addEventListener voor events
+   - Formatteer getallen in Nederlands formaat (toLocaleString('nl-NL'))
+   - Input validatie
+   - Toon resultaten met gedetailleerde breakdown
 
-3. **Contenido 100% en DANÉS**:
-   - TODO el contenido debe estar en danés (labels, placeholders, mensajes, etc.)
-   - Labels claros y descriptivos en danés
-   - Mensajes de error informativos en danés
-   - Instrucciones en danés
-   - Usar "kr" para moneda danesa
-   - Usar "," para decimales y "." para miles en display (formato danés)
-   - Términos técnicos en danés (no traducir literalmente del inglés)
+3. **Inhoud 100% in het NEDERLANDS**:
+   - ALLE inhoud moet in het Nederlands (labels, placeholders, berichten, etc.)
+   - Duidelijke en beschrijvende labels in het Nederlands
+   - Informatieve foutmeldingen in het Nederlands
+   - Instructies in het Nederlands
+   - Gebruik "€" voor Euro
+   - Gebruik "," voor decimalen en "." voor duizendtallen in display (Nederlands formaat)
+   - Technische termen in het Nederlands (niet letterlijk vertalen uit het Engels)
+   - ZZP-specifieke termen: "ZZP'er", "zzp-inkomen", "omzet", "BTW-aangifte", etc.
 
-4. **Funcionalidad**:
-   - La calculadora debe ser práctica y útil
-   - Incluir validaciones
-   - Mostrar breakdown/desglose de la calculación
-   - Manejar casos extremos
-   - Responsive (las clases CSS ya lo son)
+4. **Functionaliteit**:
+   - De calculator moet praktisch en nuttig zijn
+   - Inclusief validaties
+   - Toon breakdown/uitsplitsing van de berekening
+   - Behandel edge cases
+   - Responsive (de CSS classes zijn dit al)
 
-FORMATO DE RESPUESTA:
+ANTWOORDFORMAAT:
 
-Responde ÚNICAMENTE con un JSON válido en este formato exacto:
+Antwoord ALLEEN met een geldige JSON in dit exacte formaat:
 
 {
-  "html": "HTML code aquí usando las clases CSS especificadas",
-  "logic": "JavaScript code aquí - código completo funcional",
-  "styles": "CSS adicional si es absolutamente necesario (vacío si no)",
+  "html": "HTML code hier met de gespecificeerde CSS classes",
+  "logic": "JavaScript code hier - volledige functionele code",
+  "styles": "Extra CSS indien absoluut noodzakelijk (leeg indien niet)",
   "metadata": {
-    "title": "Título SEO optimizado en danés (max 60 caracteres)",
-    "description": "Meta descripción SEO en danés (max 155 caracteres)",
-    "excerpt": "Resumen corto de la calculadora en danés (1-2 líneas)"
+    "title": "SEO geoptimaliseerde titel in het Nederlands (max 60 tekens)",
+    "description": "SEO meta beschrijving in het Nederlands (max 155 tekens)",
+    "excerpt": "Korte samenvatting van de calculator in het Nederlands (1-2 regels)"
   }
 }
 
-IMPORTANTE:
-- NO incluyas markdown, solo el JSON puro
-- NO uses \`\`\`json o similar
-- El HTML debe usar solo las clases especificadas
-- El JavaScript debe ser funcional y completo
-- Todo en danés
-- Asegúrate que el JSON sea válido
+BELANGRIJK:
+- Voeg GEEN markdown toe, alleen pure JSON
+- Gebruik NIET \`\`\`json of iets dergelijks
+- De HTML moet alleen de gespecificeerde classes gebruiken
+- De JavaScript moet functioneel en compleet zijn
+- Alles in het Nederlands
+- Zorg ervoor dat de JSON geldig is
 
-Genera la calculadora ahora:`
+Genereer nu de calculator:`
 }
 
 interface ClaudeCalculatorResponse {
@@ -109,22 +111,22 @@ interface ClaudeCalculatorResponse {
 }
 
 async function generateCalculator(slug: string): Promise<void> {
-  console.log(`\n🤖 Generando calculadora: ${slug}`)
+  console.log(`\n🤖 Calculator genereren: ${slug}`)
   console.log('━'.repeat(50))
 
-  // Obtener configuración
+  // Configuratie ophalen
   const config = getKeywordConfig(slug)
   if (!config) {
-    throw new Error(`❌ No se encontró configuración para: ${slug}`)
+    throw new Error(`❌ Configuratie niet gevonden voor: ${slug}`)
   }
 
   console.log(`📊 Keyword: ${config.keyword}`)
   console.log(`📈 Volume: ${config.volume}`)
   console.log(`🎯 Priority: ${config.priority}`)
-  console.log(`\n⏳ Generando con Claude API...`)
+  console.log(`\n⏳ Genereren met Claude API...`)
 
   try {
-    // Llamar a Claude API
+    // Claude API aanroepen
     const message = await anthropic.messages.create({
       model: process.env.GENERATION_MODEL_CLAUDE || 'claude-sonnet-4-5-20250929',
       max_tokens: 20000,
@@ -137,32 +139,32 @@ async function generateCalculator(slug: string): Promise<void> {
       ]
     })
 
-    // Extraer respuesta
+    // Response extraheren
     const content = message.content[0]
     if (content.type !== 'text') {
-      throw new Error('Respuesta inesperada de Claude')
+      throw new Error('Onverwacht antwoord van Claude')
     }
 
-    // Parsear JSON
+    // JSON parsen
     let responseText = content.text.trim()
 
-    // Limpiar posibles markdown
+    // Eventuele markdown verwijderen
     responseText = responseText.replace(/^```json\s*/i, '').replace(/\s*```$/, '')
 
     const response: ClaudeCalculatorResponse = JSON.parse(responseText)
 
-    console.log(`✅ Código generado exitosamente`)
-    console.log(`   - HTML: ${response.html.length} caracteres`)
-    console.log(`   - Logic: ${response.logic.length} caracteres`)
+    console.log(`✅ Code succesvol gegenereerd`)
+    console.log(`   - HTML: ${response.html.length} tekens`)
+    console.log(`   - Logic: ${response.logic.length} tekens`)
     console.log(`   - Title: ${response.metadata.title}`)
 
-    // Crear archivo de datos
+    // Data bestand aanmaken
     const fileContent = `import { CalculatorData } from '@/types/calculator'
 
 /**
- * Calculadora: ${config.keyword}
- * Generado automáticamente con Claude API
- * Fecha: ${new Date().toISOString()}
+ * Calculator: ${config.keyword}
+ * Automatisch gegenereerd met Claude API
+ * Datum: ${new Date().toISOString()}
  */
 
 export const ${slug.replace(/-/g, '_')}CalculatorData: CalculatorData = {
@@ -172,7 +174,7 @@ export const ${slug.replace(/-/g, '_')}CalculatorData: CalculatorData = {
     title: ${JSON.stringify(response.metadata.title)},
     description: ${JSON.stringify(response.metadata.description)},
     excerpt: ${JSON.stringify(response.metadata.excerpt)},
-    canonical: 'https://pengekalkulator.com${config.url}',
+    canonical: 'https://zzpbereken.com${config.url}',
     keywords: [${JSON.stringify(config.keyword)}],
     category: ${JSON.stringify(config.category)}
   },
@@ -184,10 +186,10 @@ export const ${slug.replace(/-/g, '_')}CalculatorData: CalculatorData = {
   },
 
   content: {
-    // Este contenido será generado por OpenAI en el siguiente paso
+    // Deze inhoud wordt gegenereerd door OpenAI in de volgende stap
     howToUse: {
-      title: 'Sådan bruges kalkulatoren',
-      description: 'Pending OpenAI generation',
+      title: 'Hoe te gebruiken',
+      description: 'In afwachting van OpenAI generatie',
       steps: []
     },
     examples: [],
@@ -199,15 +201,15 @@ export const ${slug.replace(/-/g, '_')}CalculatorData: CalculatorData = {
 }
 `
 
-    // Guardar archivo
+    // Bestand opslaan
     const outputPath = path.join(__dirname, '..', 'calculators-data', `${slug}.ts`)
     fs.writeFileSync(outputPath, fileContent, 'utf-8')
 
-    console.log(`\n💾 Archivo guardado: calculators-data/${slug}.ts`)
-    console.log(`✨ Generación completada exitosamente!\n`)
+    console.log(`\n💾 Bestand opgeslagen: calculators-data/${slug}.ts`)
+    console.log(`✨ Generatie succesvol afgerond!\n`)
 
   } catch (error: any) {
-    console.error(`\n❌ Error generando calculadora:`)
+    console.error(`\n❌ Fout bij genereren calculator:`)
     console.error(error.message)
     if (error.response) {
       console.error('Response:', error.response.data)
@@ -222,29 +224,27 @@ async function main() {
 
   if (args.length === 0 || args[0] === '--help') {
     console.log(`
-📋 Generador de Calculadoras con Claude API
+📋 Calculator Generator met Claude API
 
-Uso:
+Gebruik:
   npm run generate:calculator -- --slug=SLUG
 
-Ejemplos:
-  npm run generate:calculator -- --slug=procent
-  npm run generate:calculator -- --slug=lon-efter-skat
+Voorbeelden:
+  npm run generate:calculator -- --slug=btw-berekenen
+  npm run generate:calculator -- --slug=uurloon-calculator
 
-Calculadoras disponibles:
-  - lon-efter-skat (ALTA prioridad)
-  - procent (ALTA prioridad)
-  - flexjob-lon
-  - enhedspris
-  - renters-rente
-  ... y 13 más
+Beschikbare calculators:
+  - btw-berekenen (HOGE prioriteit)
+  - uurloon-calculator (HOGE prioriteit)
+  - inkomstenbelasting
+  - ... en meer
     `)
     process.exit(0)
   }
 
   const slugArg = args.find(arg => arg.startsWith('--slug='))
   if (!slugArg) {
-    console.error('❌ Error: Debes especificar --slug=SLUG')
+    console.error('❌ Fout: Je moet --slug=SLUG specificeren')
     process.exit(1)
   }
 

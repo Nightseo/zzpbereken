@@ -27,7 +27,7 @@ export async function getGeneratedCalculators(): Promise<Record<string, Calculat
       if (!fileContent.includes('Pending OpenAI generation')) {
         // Importar dinámicamente
         const module = await import(`@/calculators-data/${slug}`)
-        const calculatorData = module[`${slug.replace(/-/g, '')}CalculatorData`] || module.default
+        const calculatorData = module[`${slug.replace(/-/g, '_')}CalculatorData`] || module.default
 
         if (calculatorData) {
           calculators[slug] = calculatorData
@@ -75,7 +75,7 @@ export function getGeneratedSlugs(): string[] {
 export async function getCalculatorBySlug(slug: string): Promise<CalculatorData | null> {
   try {
     const module = await import(`@/calculators-data/${slug}`)
-    const calculatorData = module[`${slug.replace(/-/g, '')}CalculatorData`] || module.default
+    const calculatorData = module[`${slug.replace(/-/g, '_')}CalculatorData`] || module.default
     return calculatorData || null
   } catch (error) {
     return null

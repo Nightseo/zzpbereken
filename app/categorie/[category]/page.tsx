@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!categoryInfo) {
     return {
-      title: 'Kategori ikke fundet',
-      description: 'Den ønskede kategori blev ikke fundet.'
+      title: 'Categorie niet gevonden',
+      description: 'De gewenste categorie is niet gevonden.'
     }
   }
 
@@ -29,10 +29,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: categoryInfo.metaTitle,
       description: categoryInfo.metaDescription,
       type: 'website',
-      locale: 'da_DK',
+      locale: 'nl_NL',
     },
     alternates: {
-      canonical: `https://pengekalkulator.com/kategori/${params.category}`,
+      canonical: `https://zzpbereken.com/categorie/${params.category}`,
     },
   }
 }
@@ -70,12 +70,12 @@ export default async function CategoryPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-primary-600 hover:text-primary-700">
-                Hjem
+                Home
               </Link>
               <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-              <span className="text-gray-600">Kategorier</span>
+              <span className="text-gray-600">Categorieën</span>
               <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -93,7 +93,7 @@ export default async function CategoryPage({ params }: PageProps) {
             <p className="text-xl text-gray-600 mb-6 max-w-3xl">
               {categoryInfo.description}
             </p>
-            <div className="bg-gray-50 border border-gray-200 p-6 max-w-4xl">
+            <div className="bg-primary-50 border-l-4 border-primary-600 p-6 max-w-4xl">
               <p className="text-gray-700 leading-relaxed">
                 {categoryInfo.seoText}
               </p>
@@ -107,24 +107,24 @@ export default async function CategoryPage({ params }: PageProps) {
             <>
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  Kalkulatorer i {categoryInfo.name}
+                  Calculators in {categoryInfo.name}
                 </h2>
                 <p className="text-gray-600">
-                  {categoryCalculators.length} {categoryCalculators.length === 1 ? 'kalkulator' : 'kalkulatorer'} tilgængelig
+                  {categoryCalculators.length} {categoryCalculators.length === 1 ? 'calculator' : 'calculators'} beschikbaar
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categoryCalculators.map(([slug, calculator]) => (
                   <Link
                     key={slug}
-                    href={`/beregn/${slug}`}
-                    className="bg-white border border-gray-200 p-8 hover:border-primary-600 hover:shadow-md transition-all group"
+                    href={`/bereken/${slug}`}
+                    className="bg-white border-2 border-gray-200 p-8 hover:border-primary-600 hover:shadow-lg transition-all group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
                         {calculator.metadata.h2 || calculator.metadata.title}
                       </h3>
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
@@ -132,7 +132,7 @@ export default async function CategoryPage({ params }: PageProps) {
                       {calculator.metadata.excerpt}
                     </p>
                     <div className="inline-flex items-center text-primary-600 text-sm font-semibold">
-                      <span>Brug kalkulator</span>
+                      <span>Gebruik calculator</span>
                     </div>
                   </Link>
                 ))}
@@ -142,24 +142,24 @@ export default async function CategoryPage({ params }: PageProps) {
             <>
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  Andre tilgængelige kalkulatorer
+                  Andere beschikbare calculators
                 </h2>
                 <p className="text-gray-600">
-                  Der er endnu ingen kalkulatorer i {categoryInfo.name}. Se andre tilgængelige kalkulatorer:
+                  Er zijn nog geen calculators in {categoryInfo.name}. Bekijk andere beschikbare calculators:
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {Object.entries(calculatorsData).slice(0, 6).map(([slug, calculator]) => (
                   <Link
                     key={slug}
-                    href={`/beregn/${slug}`}
-                    className="bg-white border border-gray-200 p-8 hover:border-primary-600 hover:shadow-md transition-all group"
+                    href={`/bereken/${slug}`}
+                    className="bg-white border-2 border-gray-200 p-8 hover:border-primary-600 hover:shadow-lg transition-all group"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
                         {calculator.metadata.h2 || calculator.metadata.title}
                       </h3>
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
@@ -167,7 +167,7 @@ export default async function CategoryPage({ params }: PageProps) {
                       {calculator.metadata.excerpt}
                     </p>
                     <div className="inline-flex items-center text-primary-600 text-sm font-semibold">
-                      <span>Brug kalkulator</span>
+                      <span>Gebruik calculator</span>
                     </div>
                   </Link>
                 ))}
@@ -180,7 +180,7 @@ export default async function CategoryPage({ params }: PageProps) {
         <div className="bg-gray-50 border-t border-gray-200 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Andre kategorier
+              Andere categorieën
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {getAllCategorySlugs()
@@ -191,8 +191,8 @@ export default async function CategoryPage({ params }: PageProps) {
                   return (
                     <Link
                       key={slug}
-                      href={`/kategori/${slug}`}
-                      className="bg-white border border-gray-200 p-4 hover:border-primary-600 hover:shadow-sm transition-all"
+                      href={`/categorie/${slug}`}
+                      className="bg-white border-2 border-gray-200 p-4 hover:border-primary-600 hover:shadow-sm transition-all"
                     >
                       <h3 className="font-semibold text-gray-900 text-sm">
                         {cat.name}
@@ -216,64 +216,64 @@ export default async function CategoryPage({ params }: PageProps) {
               // 1. Organization Schema
               {
                 '@type': 'Organization',
-                '@id': 'https://pengekalkulator.com/#organization',
-                name: 'PengeKalkulator',
-                url: 'https://pengekalkulator.com',
+                '@id': 'https://zzpbereken.com/#organization',
+                name: 'ZZP Bereken',
+                url: 'https://zzpbereken.com',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://pengekalkulator.com/icon.png',
+                  url: 'https://zzpbereken.com/icon.png',
                 },
               },
               // 2. WebSite Schema
               {
                 '@type': 'WebSite',
-                '@id': 'https://pengekalkulator.com/#website',
-                url: 'https://pengekalkulator.com',
-                name: 'PengeKalkulator',
+                '@id': 'https://zzpbereken.com/#website',
+                url: 'https://zzpbereken.com',
+                name: 'ZZP Bereken',
                 publisher: {
-                  '@id': 'https://pengekalkulator.com/#organization',
+                  '@id': 'https://zzpbereken.com/#organization',
                 },
-                inLanguage: 'da-DK',
+                inLanguage: 'nl-NL',
               },
               // 3. BreadcrumbList Schema
               {
                 '@type': 'BreadcrumbList',
-                '@id': `https://pengekalkulator.com/kategori/${params.category}#breadcrumb`,
+                '@id': `https://zzpbereken.com/categorie/${params.category}#breadcrumb`,
                 itemListElement: [
                   {
                     '@type': 'ListItem',
                     position: 1,
-                    name: 'Hjem',
-                    item: 'https://pengekalkulator.com',
+                    name: 'Home',
+                    item: 'https://zzpbereken.com',
                   },
                   {
                     '@type': 'ListItem',
                     position: 2,
-                    name: 'Kategorier',
-                    item: 'https://pengekalkulator.com/#kategorier',
+                    name: 'Categorieën',
+                    item: 'https://zzpbereken.com/#categorien',
                   },
                   {
                     '@type': 'ListItem',
                     position: 3,
                     name: categoryInfo.name,
-                    item: `https://pengekalkulator.com/kategori/${params.category}`,
+                    item: `https://zzpbereken.com/categorie/${params.category}`,
                   },
                 ],
               },
               // 4. CollectionPage Schema
               {
                 '@type': 'CollectionPage',
-                '@id': `https://pengekalkulator.com/kategori/${params.category}#webpage`,
-                url: `https://pengekalkulator.com/kategori/${params.category}`,
+                '@id': `https://zzpbereken.com/categorie/${params.category}#webpage`,
+                url: `https://zzpbereken.com/categorie/${params.category}`,
                 name: categoryInfo.metaTitle,
                 description: categoryInfo.metaDescription,
                 isPartOf: {
-                  '@id': 'https://pengekalkulator.com/#website',
+                  '@id': 'https://zzpbereken.com/#website',
                 },
                 breadcrumb: {
-                  '@id': `https://pengekalkulator.com/kategori/${params.category}#breadcrumb`,
+                  '@id': `https://zzpbereken.com/categorie/${params.category}#breadcrumb`,
                 },
-                inLanguage: 'da-DK',
+                inLanguage: 'nl-NL',
                 about: {
                   '@type': 'Thing',
                   name: categoryInfo.name,
@@ -285,8 +285,8 @@ export default async function CategoryPage({ params }: PageProps) {
                 ? [
                     {
                       '@type': 'ItemList',
-                      '@id': `https://pengekalkulator.com/kategori/${params.category}#calculators`,
-                      name: `${categoryInfo.name} Kalkulatorer`,
+                      '@id': `https://zzpbereken.com/categorie/${params.category}#calculators`,
+                      name: `${categoryInfo.name} Calculators`,
                       description: categoryInfo.description,
                       numberOfItems: categoryCalculators.length,
                       itemListElement: categoryCalculators.map(([slug, calc], index) => ({
@@ -296,13 +296,13 @@ export default async function CategoryPage({ params }: PageProps) {
                           '@type': 'SoftwareApplication',
                           name: calc.metadata.h2 || calc.metadata.title,
                           description: calc.metadata.excerpt,
-                          url: `https://pengekalkulator.com/beregn/${slug}`,
+                          url: `https://zzpbereken.com/bereken/${slug}`,
                           applicationCategory: 'FinanceApplication',
                           operatingSystem: 'Web Browser',
                           offers: {
                             '@type': 'Offer',
                             price: '0',
-                            priceCurrency: 'DKK',
+                            priceCurrency: 'EUR',
                           },
                         },
                       })),

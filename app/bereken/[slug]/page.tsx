@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!calculator) {
     return {
-      title: 'Kalkulator ikke fundet',
-      description: 'Den ønskede kalkulator blev ikke fundet.'
+      title: 'Calculator niet gevonden',
+      description: 'De gewenste calculator is niet gevonden.'
     }
   }
 
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: calculator.metadata.title,
       description: calculator.metadata.description,
       type: 'website',
-      locale: 'da_DK',
+      locale: 'nl_NL',
     },
     alternates: {
       canonical: calculator.metadata.canonical,
@@ -68,13 +68,13 @@ export default async function CalculatorPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-primary-600 hover:text-primary-700">
-                Hjem
+                Home
               </Link>
               <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
               {categoryInfo ? (
-                <Link href={`/kategori/${categoryInfo.slug}`} className="text-primary-600 hover:text-primary-700">
+                <Link href={`/categorie/${categoryInfo.slug}`} className="text-primary-600 hover:text-primary-700">
                   {calculator.metadata.category}
                 </Link>
               ) : (
@@ -92,7 +92,7 @@ export default async function CalculatorPage({ params }: PageProps) {
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
-              {calculator.metadata.h1 || `Beregn ${calculator.metadata.keywords[0]}`}
+              {calculator.metadata.h1 || `Bereken ${calculator.metadata.keywords[0]}`}
             </h1>
             <p className="text-base md:text-xl text-gray-600 max-w-3xl mb-4">
               {calculator.metadata.excerpt}
@@ -105,9 +105,9 @@ export default async function CalculatorPage({ params }: PageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
                 <span>
-                  Creado por:{' '}
-                  <Link href="/om-os" className="text-primary-600 hover:text-primary-700 font-medium">
-                    PengeKalkulator
+                  Gemaakt door:{' '}
+                  <Link href="/over-ons" className="text-primary-600 hover:text-primary-700 font-medium">
+                    ZZP Bereken
                   </Link>
                 </span>
               </div>
@@ -117,8 +117,8 @@ export default async function CalculatorPage({ params }: PageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <time dateTime={calculator.generatedAt}>
-                  Publicado:{' '}
-                  {new Date(calculator.generatedAt).toLocaleDateString('da-DK', {
+                  Gepubliceerd:{' '}
+                  {new Date(calculator.generatedAt).toLocaleDateString('nl-NL', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
@@ -135,26 +135,26 @@ export default async function CalculatorPage({ params }: PageProps) {
             {/* Main Calculator */}
             <div className="lg:col-span-2">
               <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                {calculator.metadata.h2 || 'Kalkulator'}
+                {calculator.metadata.h2 || 'Calculator'}
               </h2>
 
               {/* Legal Compliance Badge */}
-              <div className="flex items-start space-x-2 md:space-x-3 mb-4 md:mb-6 bg-green-50 border border-green-200 p-3 md:p-4">
+              <div className="flex items-start space-x-2 md:space-x-3 mb-4 md:mb-6 bg-green-50 border-2 border-green-200 p-3 md:p-4">
                 <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <div>
                   <div className="text-xs md:text-sm font-semibold text-green-900 mb-1">
-                    Opdateret til gældende dansk lovgivning
+                    Bijgewerkt volgens geldende Nederlandse wetgeving
                   </div>
                   <div className="text-xs text-green-700 leading-relaxed">
-                    Denne kalkulator følger de nyeste danske skatteregler, satser og lovgivning for {new Date().getFullYear()}.
-                    Beregningerne er verificeret for nøjagtighed.
+                    Deze calculator volgt de nieuwste Nederlandse belastingregels, tarieven en wetgeving voor {new Date().getFullYear()}.
+                    De berekeningen zijn gecontroleerd op nauwkeurigheid.
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white border border-gray-200 p-4 md:p-6 lg:p-8">
+              <div className="bg-white border-2 border-gray-200 p-4 md:p-6 lg:p-8">
                 <div
                   id="calculator-container"
                   dangerouslySetInnerHTML={{ __html: calculator.calculator.html }}
@@ -194,11 +194,11 @@ export default async function CalculatorPage({ params }: PageProps) {
               {calculator.content.examples && calculator.content.examples.length > 0 && (
                 <div className="mt-12">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    Eksempler
+                    Voorbeelden
                   </h2>
                   <div className="space-y-6">
                     {calculator.content.examples.map((example, idx) => (
-                      <div key={idx} className="bg-gray-50 border border-gray-200 p-6">
+                      <div key={idx} className="bg-gray-50 border-2 border-gray-200 p-6">
                         <h3 className="font-semibold text-gray-900 mb-2">
                           {example.title}
                         </h3>
@@ -213,8 +213,8 @@ export default async function CalculatorPage({ params }: PageProps) {
                             </div>
                           ))}
                         </div>
-                        <div className="bg-primary-50 border border-primary-200 p-3 mb-3">
-                          <div className="text-sm text-gray-600">Resultat:</div>
+                        <div className="bg-primary-50 border-2 border-primary-200 p-3 mb-3">
+                          <div className="text-sm text-gray-600">Resultaat:</div>
                           <div className="text-lg font-bold text-primary-700">
                             {example.output}
                           </div>
@@ -232,11 +232,11 @@ export default async function CalculatorPage({ params }: PageProps) {
               {calculator.content.faqs && calculator.content.faqs.length > 0 && (
                 <div className="mt-12">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    Ofte stillede spørgsmål
+                    Veelgestelde vragen
                   </h2>
                   <div className="space-y-4">
                     {calculator.content.faqs.map((faq, idx) => (
-                      <div key={idx} className="bg-white border border-gray-200 p-6">
+                      <div key={idx} className="bg-white border-2 border-gray-200 p-6">
                         <h3 className="font-semibold text-gray-900 mb-2">
                           {faq.question}
                         </h3>
@@ -254,7 +254,7 @@ export default async function CalculatorPage({ params }: PageProps) {
             <div className="lg:col-span-1">
               {/* Additional Info */}
               {calculator.content.additionalInfo && (
-                <div className="bg-primary-50 border border-primary-200 p-6 mb-6">
+                <div className="bg-primary-50 border-2 border-primary-200 p-6 mb-6">
                   <h3 className="font-bold text-gray-900 mb-3">
                     {calculator.content.additionalInfo.title}
                   </h3>
@@ -265,9 +265,9 @@ export default async function CalculatorPage({ params }: PageProps) {
               )}
 
               {/* Related Calculators */}
-              <div className="bg-white border border-gray-200 p-6 mb-6">
+              <div className="bg-white border-2 border-gray-200 p-6 mb-6">
                 <h3 className="font-bold text-gray-900 mb-4">
-                  Relaterede Kalkulatorer
+                  Gerelateerde Calculators
                 </h3>
                 <div className="space-y-3">
                   {Object.entries(calculators)
@@ -279,8 +279,8 @@ export default async function CalculatorPage({ params }: PageProps) {
                     .map(([slug, calc]) => (
                       <Link
                         key={slug}
-                        href={`/beregn/${slug}`}
-                        className="block p-3 border border-gray-200 hover:border-primary-300 hover:bg-gray-50 transition-all group"
+                        href={`/bereken/${slug}`}
+                        className="block p-3 border-2 border-gray-200 hover:border-primary-600 hover:bg-gray-50 transition-all group"
                       >
                         <h4 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-primary-600">
                           {calc.metadata.h2 || calc.metadata.title}
@@ -294,9 +294,9 @@ export default async function CalculatorPage({ params }: PageProps) {
               </div>
 
               {/* Latest Calculators */}
-              <div className="bg-white border border-gray-200 p-6">
+              <div className="bg-white border-2 border-gray-200 p-6">
                 <h3 className="font-bold text-gray-900 mb-4">
-                  Seneste Kalkulatorer
+                  Nieuwste Calculators
                 </h3>
                 <div className="space-y-3">
                   {Object.entries(calculators)
@@ -308,15 +308,15 @@ export default async function CalculatorPage({ params }: PageProps) {
                     .map(([slug, calc]) => (
                       <Link
                         key={slug}
-                        href={`/beregn/${slug}`}
-                        className="block p-3 border border-gray-200 hover:border-primary-300 hover:bg-gray-50 transition-all group"
+                        href={`/bereken/${slug}`}
+                        className="block p-3 border-2 border-gray-200 hover:border-primary-600 hover:bg-gray-50 transition-all group"
                       >
                         <div className="flex items-start justify-between mb-1">
                           <h4 className="font-semibold text-gray-900 text-sm group-hover:text-primary-600">
                             {calc.metadata.h2 || calc.metadata.title}
                           </h4>
                           <span className="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-primary-100 text-primary-700">
-                            Ny
+                            Nieuw
                           </span>
                         </div>
                         <p className="text-xs text-gray-600 line-clamp-1">
@@ -360,41 +360,41 @@ export default async function CalculatorPage({ params }: PageProps) {
               // 1. Organization Schema
               {
                 '@type': 'Organization',
-                '@id': 'https://pengekalkulator.com/#organization',
-                name: 'PengeKalkulator',
-                url: 'https://pengekalkulator.com',
+                '@id': 'https://zzpbereken.com/#organization',
+                name: 'ZZP Bereken',
+                url: 'https://zzpbereken.com',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://pengekalkulator.com/icon.png',
+                  url: 'https://zzpbereken.com/icon.png',
                 },
                 sameAs: [],
                 contactPoint: {
                   '@type': 'ContactPoint',
                   contactType: 'customer service',
-                  availableLanguage: 'Danish',
+                  availableLanguage: 'Dutch',
                 },
               },
               // 2. WebSite Schema
               {
                 '@type': 'WebSite',
-                '@id': 'https://pengekalkulator.com/#website',
-                url: 'https://pengekalkulator.com',
-                name: 'PengeKalkulator',
+                '@id': 'https://zzpbereken.com/#website',
+                url: 'https://zzpbereken.com',
+                name: 'ZZP Bereken',
                 publisher: {
-                  '@id': 'https://pengekalkulator.com/#organization',
+                  '@id': 'https://zzpbereken.com/#organization',
                 },
-                inLanguage: 'da-DK',
+                inLanguage: 'nl-NL',
               },
               // 3. BreadcrumbList Schema
               {
                 '@type': 'BreadcrumbList',
-                '@id': `https://pengekalkulator.com/beregn/${params.slug}#breadcrumb`,
+                '@id': `https://zzpbereken.com/bereken/${params.slug}#breadcrumb`,
                 itemListElement: [
                   {
                     '@type': 'ListItem',
                     position: 1,
-                    name: 'Hjem',
-                    item: 'https://pengekalkulator.com',
+                    name: 'Home',
+                    item: 'https://zzpbereken.com',
                   },
                   ...(categoryInfo
                     ? [
@@ -402,13 +402,13 @@ export default async function CalculatorPage({ params }: PageProps) {
                           '@type': 'ListItem',
                           position: 2,
                           name: calculator.metadata.category,
-                          item: `https://pengekalkulator.com/kategori/${categoryInfo.slug}`,
+                          item: `https://zzpbereken.com/categorie/${categoryInfo.slug}`,
                         },
                         {
                           '@type': 'ListItem',
                           position: 3,
                           name: calculator.metadata.h2 || calculator.metadata.title,
-                          item: `https://pengekalkulator.com/beregn/${params.slug}`,
+                          item: `https://zzpbereken.com/bereken/${params.slug}`,
                         },
                       ]
                     : [
@@ -416,7 +416,7 @@ export default async function CalculatorPage({ params }: PageProps) {
                           '@type': 'ListItem',
                           position: 2,
                           name: calculator.metadata.h2 || calculator.metadata.title,
-                          item: `https://pengekalkulator.com/beregn/${params.slug}`,
+                          item: `https://zzpbereken.com/bereken/${params.slug}`,
                         },
                       ]),
                 ],
@@ -424,27 +424,27 @@ export default async function CalculatorPage({ params }: PageProps) {
               // 4. WebPage Schema
               {
                 '@type': 'WebPage',
-                '@id': `https://pengekalkulator.com/beregn/${params.slug}#webpage`,
-                url: `https://pengekalkulator.com/beregn/${params.slug}`,
+                '@id': `https://zzpbereken.com/bereken/${params.slug}#webpage`,
+                url: `https://zzpbereken.com/bereken/${params.slug}`,
                 name: calculator.metadata.title,
                 description: calculator.metadata.description,
                 isPartOf: {
-                  '@id': 'https://pengekalkulator.com/#website',
+                  '@id': 'https://zzpbereken.com/#website',
                 },
                 about: {
-                  '@id': `https://pengekalkulator.com/beregn/${params.slug}#software`,
+                  '@id': `https://zzpbereken.com/bereken/${params.slug}#software`,
                 },
                 breadcrumb: {
-                  '@id': `https://pengekalkulator.com/beregn/${params.slug}#breadcrumb`,
+                  '@id': `https://zzpbereken.com/bereken/${params.slug}#breadcrumb`,
                 },
-                inLanguage: 'da-DK',
+                inLanguage: 'nl-NL',
                 datePublished: calculator.generatedAt,
                 dateModified: calculator.generatedAt,
               },
               // 5. SoftwareApplication Schema (Calculator)
               {
                 '@type': 'SoftwareApplication',
-                '@id': `https://pengekalkulator.com/beregn/${params.slug}#software`,
+                '@id': `https://zzpbereken.com/bereken/${params.slug}#software`,
                 name: calculator.metadata.h2 || calculator.metadata.title,
                 description: calculator.metadata.description,
                 applicationCategory: 'FinanceApplication',
@@ -452,7 +452,7 @@ export default async function CalculatorPage({ params }: PageProps) {
                 offers: {
                   '@type': 'Offer',
                   price: '0',
-                  priceCurrency: 'DKK',
+                  priceCurrency: 'EUR',
                 },
                 aggregateRating: {
                   '@type': 'AggregateRating',
@@ -462,10 +462,10 @@ export default async function CalculatorPage({ params }: PageProps) {
                   worstRating: '1',
                 },
                 author: {
-                  '@id': 'https://pengekalkulator.com/#organization',
+                  '@id': 'https://zzpbereken.com/#organization',
                 },
-                url: `https://pengekalkulator.com/beregn/${params.slug}`,
-                inLanguage: 'da-DK',
+                url: `https://zzpbereken.com/bereken/${params.slug}`,
+                inLanguage: 'nl-NL',
                 featureList: calculator.content.howToUse?.steps
                   ? calculator.content.howToUse.steps.map((step) => step.title).join(', ')
                   : undefined,
@@ -475,7 +475,7 @@ export default async function CalculatorPage({ params }: PageProps) {
                 ? [
                     {
                       '@type': 'FAQPage',
-                      '@id': `https://pengekalkulator.com/beregn/${params.slug}#faq`,
+                      '@id': `https://zzpbereken.com/bereken/${params.slug}#faq`,
                       mainEntity: calculator.content.faqs.map((faq) => ({
                         '@type': 'Question',
                         name: faq.question,
@@ -492,7 +492,7 @@ export default async function CalculatorPage({ params }: PageProps) {
                 ? [
                     {
                       '@type': 'HowTo',
-                      '@id': `https://pengekalkulator.com/beregn/${params.slug}#howto`,
+                      '@id': `https://zzpbereken.com/bereken/${params.slug}#howto`,
                       name: calculator.content.howToUse.title,
                       description: calculator.content.howToUse.description,
                       step: calculator.content.howToUse.steps.map((step) => ({

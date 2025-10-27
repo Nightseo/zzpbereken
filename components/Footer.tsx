@@ -13,43 +13,43 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-white">PengeKalkulator</span>
+              <span className="text-lg font-bold text-white">ZZP Bereken</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Professionelle beregningsværktøjer til danske virksomheder og privatpersoner.
+              Professionele rekentools voor ZZP'ers en kleine ondernemers in Nederland.
             </p>
           </div>
 
-          {/* Kalkulatorer */}
+          {/* Calculators */}
           <div>
-            <div className="text-sm font-bold text-white uppercase tracking-wider mb-4">Populære Kalkulatorer</div>
+            <div className="text-sm font-bold text-white uppercase tracking-wider mb-4">Populaire Calculators</div>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/beregn/procent" className="text-gray-400 hover:text-primary-400 transition-colors">Procent Beregner</Link></li>
-              <li><Link href="/beregn/indlaansrente" className="text-gray-400 hover:text-primary-400 transition-colors">Indlånsrente</Link></li>
-              <li><Link href="/beregn/nutidsvaerdi" className="text-gray-400 hover:text-primary-400 transition-colors">Nutidsværdi</Link></li>
-              <li><Link href="/#kalkulatorer" className="text-gray-400 hover:text-primary-400 transition-colors">Se alle kalkulatorer →</Link></li>
+              <li><Link href="/#calculators" className="text-gray-400 hover:text-primary-400 transition-colors">BTW Berekenen</Link></li>
+              <li><Link href="/#calculators" className="text-gray-400 hover:text-primary-400 transition-colors">Uurloon Calculator</Link></li>
+              <li><Link href="/#calculators" className="text-gray-400 hover:text-primary-400 transition-colors">Inkomstenbelasting</Link></li>
+              <li><Link href="/#calculators" className="text-gray-400 hover:text-primary-400 transition-colors">Bekijk alle calculators →</Link></li>
             </ul>
           </div>
 
-          {/* Kategorier */}
+          {/* Categorieën */}
           <div>
-            <div className="text-sm font-bold text-white uppercase tracking-wider mb-4">Kategorier</div>
+            <div className="text-sm font-bold text-white uppercase tracking-wider mb-4">Categorieën</div>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/kategori/lon-skat" className="text-gray-400 hover:text-primary-400 transition-colors">Løn & Skat</Link></li>
-              <li><Link href="/kategori/forretning" className="text-gray-400 hover:text-primary-400 transition-colors">Forretning</Link></li>
-              <li><Link href="/kategori/investering-opsparing" className="text-gray-400 hover:text-primary-400 transition-colors">Investering & Opsparing</Link></li>
-              <li><Link href="/kategori/matematik" className="text-gray-400 hover:text-primary-400 transition-colors">Matematik</Link></li>
+              <li><Link href="/categorie/belasting" className="text-gray-400 hover:text-primary-400 transition-colors">Belasting</Link></li>
+              <li><Link href="/categorie/zzp-administratie" className="text-gray-400 hover:text-primary-400 transition-colors">ZZP Administratie</Link></li>
+              <li><Link href="/categorie/financien" className="text-gray-400 hover:text-primary-400 transition-colors">Financiën</Link></li>
+              <li><Link href="/categorie/wiskunde" className="text-gray-400 hover:text-primary-400 transition-colors">Wiskunde</Link></li>
             </ul>
           </div>
 
-          {/* Information */}
+          {/* Informatie */}
           <div>
-            <div className="text-sm font-bold text-white uppercase tracking-wider mb-4">Information</div>
+            <div className="text-sm font-bold text-white uppercase tracking-wider mb-4">Informatie</div>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/om-os" className="text-gray-400 hover:text-primary-400 transition-colors">Om PengeKalkulator</Link></li>
-              <li><Link href="/om-os#kontakt" className="text-gray-400 hover:text-primary-400 transition-colors">Kontakt os</Link></li>
-              <li><Link href="/privatlivspolitik" className="text-gray-400 hover:text-primary-400 transition-colors">Privatlivspolitik</Link></li>
-              <li><Link href="/cookies" className="text-gray-400 hover:text-primary-400 transition-colors">Cookiepolitik</Link></li>
+              <li><Link href="/over-ons" className="text-gray-400 hover:text-primary-400 transition-colors">Over ZZP Bereken</Link></li>
+              <li><Link href="/over-ons#contact" className="text-gray-400 hover:text-primary-400 transition-colors">Contact</Link></li>
+              <li><Link href="/privacybeleid" className="text-gray-400 hover:text-primary-400 transition-colors">Privacybeleid</Link></li>
+              <li><Link href="/cookies" className="text-gray-400 hover:text-primary-400 transition-colors">Cookiebeleid</Link></li>
             </ul>
           </div>
         </div>
@@ -58,12 +58,12 @@ export default function Footer() {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()} PengeKalkulator. Alle rettigheder forbeholdes.
+              © {new Date().getFullYear()} ZZP Bereken. Alle rechten voorbehouden.
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-500">
-              <span>🇩🇰 Danmark</span>
+              <span>🇳🇱 Nederland</span>
               <span>•</span>
-              <span>Dansk lovgivning</span>
+              <span>Nederlandse wetgeving</span>
             </div>
           </div>
         </div>

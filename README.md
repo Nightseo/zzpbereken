@@ -1,6 +1,6 @@
-# PengeKalkulator
+# ZZP Bereken
 
-A modern, SEO-optimized website for Danish business calculators built with Next.js 14.
+A modern, SEO-optimized website for Dutch ZZP (freelancer/self-employed) calculators built with Next.js 14.
 
 ## Features
 
@@ -40,7 +40,7 @@ npm start
 
 ```
 /app
-  /beregn/[slug]      - Individual calculator pages
+  /bereken/[slug]     - Individual calculator pages
   layout.tsx          - Root layout with SEO metadata
   page.tsx            - Homepage
   sitemap.ts          - Auto-generated sitemap
@@ -61,7 +61,7 @@ npm start
 
 1. Add calculator data to `/lib/calculators.ts`
 2. The page will automatically generate routes for all calculators
-3. Customize the calculator template in `/app/beregn/[slug]/page.tsx`
+3. Customize the calculator template in `/app/bereken/[slug]/page.tsx`
 
 ## SEO Optimization
 

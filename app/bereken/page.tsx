@@ -6,17 +6,17 @@ import { getGeneratedCalculators } from '@/lib/generated-calculators'
 import { categories } from '@/lib/categories'
 
 export const metadata: Metadata = {
-  title: 'Alle Kalkulatorer - PengeKalkulator',
-  description: 'Komplet oversigt over alle vores gratis økonomiske kalkulatorer organiseret efter kategori. Find hurtigt den rette beregningsværktøj til dine behov.',
-  keywords: ['kalkulatorer', 'beregningsværktøjer', 'økonomiske kalkulatorer', 'gratis kalkulatorer', 'danske kalkulatorer'],
+  title: 'Alle Calculators - ZZP Bereken',
+  description: 'Compleet overzicht van al onze gratis ZZP calculators georganiseerd per categorie. Vind snel de juiste rekentools voor uw behoeften.',
+  keywords: ['calculators', 'rekentools', 'ZZP calculators', 'gratis calculators', 'Nederlandse calculators', 'belastingcalculators'],
   openGraph: {
-    title: 'Alle Kalkulatorer - PengeKalkulator',
-    description: 'Komplet oversigt over alle vores gratis økonomiske kalkulatorer organiseret efter kategori.',
+    title: 'Alle Calculators - ZZP Bereken',
+    description: 'Compleet overzicht van al onze gratis ZZP calculators georganiseerd per categorie.',
     type: 'website',
-    locale: 'da_DK',
+    locale: 'nl_NL',
   },
   alternates: {
-    canonical: 'https://pengekalkulator.com/beregn',
+    canonical: 'https://zzpbereken.com/bereken',
   },
 }
 
@@ -43,11 +43,11 @@ export default async function AllCalculatorsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
             <div className="max-w-3xl">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Alle Kalkulatorer
+                Alle ZZP Calculators
               </h1>
               <p className="text-base md:text-xl text-gray-600 leading-relaxed">
-                Komplet oversigt over alle vores {Object.keys(calculatorsData).length} gratis økonomiske kalkulatorer.
-                Find hurtigt den rette beregningsværktøj til dine behov.
+                Compleet overzicht van al onze {Object.keys(calculatorsData).length} gratis ZZP calculators.
+                Vind snel de juiste rekentool voor uw behoeften.
               </p>
             </div>
           </div>
@@ -69,10 +69,10 @@ export default async function AllCalculatorsPage() {
                       {category.name}
                     </h2>
                     <Link
-                      href={`/kategori/${category.slug}`}
+                      href={`/categorie/${category.slug}`}
                       className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm"
                     >
-                      Se kategori
+                      Bekijk categorie
                       <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -88,7 +88,7 @@ export default async function AllCalculatorsPage() {
                   {categoryCalculators.map(({ slug, data }) => (
                     <Link
                       key={slug}
-                      href={`/beregn/${slug}`}
+                      href={`/bereken/${slug}`}
                       className="bg-white border border-gray-200 p-6 hover:border-primary-600 hover:shadow-lg transition-all group"
                     >
                       <div className="flex items-start justify-between mb-3">
@@ -109,7 +109,7 @@ export default async function AllCalculatorsPage() {
                       </p>
                       <div className="flex items-center justify-between">
                         <span className="inline-flex items-center text-primary-600 text-sm font-semibold">
-                          Brug kalkulator
+                          Gebruik calculator
                         </span>
                         <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1">
                           {data.metadata.category}
@@ -127,7 +127,7 @@ export default async function AllCalculatorsPage() {
               <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
-              <p className="text-gray-600 text-lg">Ingen kalkulatorer er genereret endnu.</p>
+              <p className="text-gray-600 text-lg">Er zijn nog geen calculators gegenereerd.</p>
             </div>
           )}
         </div>
@@ -136,16 +136,16 @@ export default async function AllCalculatorsPage() {
         <div className="bg-gradient-to-br from-primary-600 to-primary-700 border-t border-primary-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Kan du ikke finde den kalkulator du søger?
+              Kunt u de calculator die u zoekt niet vinden?
             </h2>
             <p className="text-primary-100 text-lg mb-8 max-w-2xl mx-auto">
-              Vi tilføjer løbende nye kalkulatorer baseret på dansk lovgivning og brugernes behov.
+              We voegen regelmatig nieuwe calculators toe op basis van Nederlandse wetgeving en de behoeften van ZZP'ers.
             </p>
             <Link
               href="/"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-medium hover:bg-gray-100 transition-all"
             >
-              Tilbage til forsiden
+              Terug naar home
             </Link>
           </div>
         </div>
@@ -161,19 +161,19 @@ export default async function AllCalculatorsPage() {
             '@graph': [
               {
                 '@type': 'CollectionPage',
-                '@id': 'https://pengekalkulator.com/beregn#webpage',
-                url: 'https://pengekalkulator.com/beregn',
-                name: 'Alle Kalkulatorer - PengeKalkulator',
-                description: 'Komplet oversigt over alle vores gratis økonomiske kalkulatorer organiseret efter kategori.',
+                '@id': 'https://zzpbereken.com/bereken#webpage',
+                url: 'https://zzpbereken.com/bereken',
+                name: 'Alle Calculators - ZZP Bereken',
+                description: 'Compleet overzicht van al onze gratis ZZP calculators georganiseerd per categorie.',
                 isPartOf: {
-                  '@id': 'https://pengekalkulator.com/#website',
+                  '@id': 'https://zzpbereken.com/#website',
                 },
-                inLanguage: 'da-DK',
+                inLanguage: 'nl-NL',
               },
               {
                 '@type': 'ItemList',
-                name: 'Kalkulatorer',
-                description: 'Samling af professionelle beregningsværktøjer',
+                name: 'ZZP Calculators',
+                description: 'Verzameling van professionele rekentools voor ZZP\'ers',
                 numberOfItems: Object.keys(calculatorsData).length,
                 itemListElement: Object.entries(calculatorsData).map(([slug, calc], index) => ({
                   '@type': 'ListItem',
@@ -182,7 +182,7 @@ export default async function AllCalculatorsPage() {
                     '@type': 'SoftwareApplication',
                     name: calc.metadata.h2 || calc.metadata.title,
                     description: calc.metadata.excerpt,
-                    url: `https://pengekalkulator.com/beregn/${slug}`,
+                    url: `https://zzpbereken.com/bereken/${slug}`,
                     applicationCategory: 'FinanceApplication',
                   },
                 })),

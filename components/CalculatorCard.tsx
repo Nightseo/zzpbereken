@@ -7,7 +7,7 @@ interface CalculatorCardProps {
 
 export default function CalculatorCard({ calculator }: CalculatorCardProps) {
   return (
-    <Link href={`/beregn/${calculator.slug}`}>
+    <Link href={`/bereken/${calculator.slug}`}>
       <article className="bg-white border border-gray-200 p-6 h-full hover:border-primary-600 hover:shadow-md transition-all group">
         <div className="flex flex-col h-full">
           <div className="flex items-start justify-between mb-4">
@@ -28,7 +28,7 @@ export default function CalculatorCard({ calculator }: CalculatorCardProps) {
           </p>
 
           <div className="flex items-center text-sm font-medium text-primary-600 group-hover:text-primary-700 transition-colors pt-4 border-t border-gray-100">
-            <span>Åbn beregner</span>
+            <span>Open calculator</span>
             <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

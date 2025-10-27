@@ -2,13 +2,13 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'PengeKalkulator - Gratis Beregningsværktøjer',
-    short_name: 'PengeKalkulator',
-    description: 'Omfattende samling af gratis online kalkulatorer til forretning, økonomi og finans',
+    name: 'ZZP Bereken - Gratis Rekentools voor ZZP\'ers',
+    short_name: 'ZZP Bereken',
+    description: 'Uitgebreide verzameling gratis online calculators voor ZZP\'ers, belastingen en financiën',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
-    theme_color: '#9333ea',
+    theme_color: '#EA580C',
     icons: [
       {
         src: '/icon-192.png',

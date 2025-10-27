@@ -13,250 +13,254 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
 
-// STYLE GUIDE - Se pasa a todos los prompts para consistencia
+// STIJLGIDS - Wordt doorgegeven aan alle prompts voor consistentie
 const STYLE_GUIDE = `
-SKRIVESTIL OG TONE:
-- Professionel men tilgængelig og brugervenlig
-- Brug naturligt dansk sprog som en indfødt dansker ville skrive
-- Undgå direkte oversættelser fra engelsk - brug danske udtryk og vendinger
-- Vær præcis og konkret uden at være teknisk overvældende
-- Brug "du" til læseren (ikke "De")
-- Korte, klare sætninger
-- Struktureret og let at skanne
-- Hjælpsom og støttende tone
-- Fokus på praktisk anvendelse
+SCHRIJFSTIJL EN TOON:
+- Professioneel maar toegankelijk en gebruiksvriendelijk
+- Gebruik natuurlijk Nederlands zoals een Nederlandse ZZP'er zou schrijven
+- Vermijd directe vertalingen uit het Engels - gebruik Nederlandse uitdrukkingen en wendingen
+- Wees precies en concreet zonder technisch overweldigend te zijn
+- Gebruik "u" naar de lezer (beleefde vorm)
+- Korte, heldere zinnen
+- Gestructureerd en gemakkelijk te scannen
+- Behulpzame en ondersteunende toon
+- Focus op praktische toepassing
+- ZZP-specifieke context waar relevant
 `
 
-// Prompt 1: How to Use (Sådan bruges kalkulatoren)
+// Prompt 1: How to Use (Hoe te gebruiken)
 function createHowToUsePrompt(keyword: string, description: string): string {
-  return `Du er content writer for en dansk finansiel hjemmeside.
+  return `Je bent een content writer voor een Nederlandse financiële website voor ZZP'ers en kleine ondernemers.
 
-OPGAVE: Skriv en "Sådan bruges kalkulatoren" sektion for: ${keyword}
+OPDRACHT: Schrijf een "Hoe te gebruiken" sectie voor: ${keyword}
 
-INFORMATION:
-- Emne: ${keyword}
-- Beskrivelse: ${description}
+INFORMATIE:
+- Onderwerp: ${keyword}
+- Beschrijving: ${description}
 
 ${STYLE_GUIDE}
 
-INDHOLD:
-Skriv en kort vejledning med:
-1. En fængende overskrift (5-8 ord)
-2. En kort introduktion (1-2 linjer) der forklarer hvad kalkulatoren gør
-3. 3-4 trin der forklarer hvordan man bruger kalkulatoren
-   - Hvert trin skal have: nummer, kort titel (3-5 ord), beskrivelse (max 100 tegn)
-   - Vær konkret og handlingsorienteret
+INHOUD:
+Schrijf een korte handleiding met:
+1. Een pakkende titel (5-8 woorden)
+2. Een korte introductie (1-2 regels) die uitlegt wat de calculator doet
+3. 3-4 stappen die uitleggen hoe je de calculator gebruikt
+   - Elke stap moet hebben: nummer, korte titel (3-5 woorden), beschrijving (max 100 tekens)
+   - Wees concreet en actiegericht
 
-SVAR FORMAT (kun JSON):
+ANTWOORDFORMAAT (alleen JSON):
 {
-  "title": "Overskrift på dansk",
-  "description": "Introduktion på dansk",
+  "title": "Titel in het Nederlands",
+  "description": "Introductie in het Nederlands",
   "steps": [
     {
       "step": 1,
-      "title": "Trin titel",
-      "description": "Trin beskrivelse"
+      "title": "Stap titel",
+      "description": "Stap beschrijving"
     }
   ]
 }
 
-Skriv HELE svaret på perfekt dansk. Kun JSON, ingen markdown.`
+Schrijf het HELE antwoord in perfect Nederlands. Alleen JSON, geen markdown.`
 }
 
-// Prompt 2: Examples (Eksempler)
+// Prompt 2: Examples (Voorbeelden)
 function createExamplesPrompt(keyword: string, description: string, previousContent: string): string {
-  return `Du er content writer for en dansk finansiel hjemmeside.
+  return `Je bent een content writer voor een Nederlandse financiële website voor ZZP'ers en kleine ondernemers.
 
-OPGAVE: Skriv praktiske eksempler for: ${keyword}
+OPDRACHT: Schrijf praktische voorbeelden voor: ${keyword}
 
-INFORMATION:
-- Emne: ${keyword}
-- Beskrivelse: ${description}
+INFORMATIE:
+- Onderwerp: ${keyword}
+- Beschrijving: ${description}
 
-TIDLIGERE INDHOLD (for kontekst):
+EERDERE INHOUD (voor context):
 ${previousContent}
 
 ${STYLE_GUIDE}
 
-INDHOLD:
-Skriv 2-3 realistiske eksempler der viser hvordan kalkulatoren bruges:
-- Hvert eksempel skal have:
-  * En kort overskrift (5-8 ord)
-  * En beskrivelse af situationen (1-2 linjer)
-  * Konkrete input-værdier der passer til danske forhold
-  * Forventet resultat
-  * En kort forklaring (1 linje)
-- Eksemplerne skal være relevante for danske brugere
-- Brug realistiske danske tal og scenarier
+INHOUD:
+Schrijf 2-3 realistische voorbeelden die laten zien hoe de calculator wordt gebruikt:
+- Elk voorbeeld moet hebben:
+  * Een korte titel (5-8 woorden)
+  * Een beschrijving van de situatie (1-2 regels)
+  * Concrete input-waarden die passen bij Nederlandse omstandigheden
+  * Verwacht resultaat
+  * Een korte uitleg (1 regel)
+- De voorbeelden moeten relevant zijn voor Nederlandse gebruikers
+- Gebruik realistische Nederlandse cijfers en scenario's
+- Voor ZZP-gerelateerde calculators: gebruik echte ZZP-scenario's (bijv. €75/uur voor freelancers, BTW-berekeningen met 21%, etc.)
 
-SVAR FORMAT (kun JSON):
+ANTWOORDFORMAAT (alleen JSON):
 {
   "examples": [
     {
-      "title": "Eksempel overskrift",
-      "description": "Situationsbeskrivelse",
+      "title": "Voorbeeld titel",
+      "description": "Situatiebeschrijving",
       "input": {
-        "felt1": "værdi1",
-        "felt2": "værdi2"
+        "veld1": "waarde1",
+        "veld2": "waarde2"
       },
-      "output": "Resultat",
-      "explanation": "Forklaring"
+      "output": "Resultaat",
+      "explanation": "Uitleg"
     }
   ]
 }
 
-Skriv HELE svaret på perfekt dansk. Kun JSON, ingen markdown.`
+Schrijf het HELE antwoord in perfect Nederlands. Alleen JSON, geen markdown.`
 }
 
-// Prompt 3: FAQs (Ofte stillede spørgsmål)
+// Prompt 3: FAQs (Veelgestelde vragen)
 function createFAQsPrompt(keyword: string, description: string, previousContent: string): string {
-  return `Du er content writer for en dansk finansiel hjemmeside.
+  return `Je bent een content writer voor een Nederlandse financiële website voor ZZP'ers en kleine ondernemers.
 
-OPGAVE: Skriv ofte stillede spørgsmål for: ${keyword}
+OPDRACHT: Schrijf veelgestelde vragen voor: ${keyword}
 
-INFORMATION:
-- Emne: ${keyword}
-- Beskrivelse: ${description}
+INFORMATIE:
+- Onderwerp: ${keyword}
+- Beschrijving: ${description}
 
-TIDLIGERE INDHOLD (for kontekst):
+EERDERE INHOUD (voor context):
 ${previousContent}
 
 ${STYLE_GUIDE}
 
-INDHOLD:
-Skriv 4-6 relevante spørgsmål og svar:
-- Spørgsmål som danske brugere faktisk ville stille
-- Klare, korte svar (max 200 tegn)
-- Fokus på praktisk hjælp
-- Inkluder eventuelt:
-  * Hvordan fungerer det?
-  * Hvad skal jeg være opmærksom på?
-  * Er det i henhold til danske regler?
-  * Tips og tricks
-- Undgå åbenlyse eller trivielle spørgsmål
+INHOUD:
+Schrijf 4-6 relevante vragen en antwoorden:
+- Vragen die Nederlandse gebruikers (vooral ZZP'ers) daadwerkelijk zouden stellen
+- Heldere, korte antwoorden (max 200 tekens)
+- Focus op praktische hulp
+- Neem indien relevant op:
+  * Hoe werkt het?
+  * Waar moet ik op letten?
+  * Is dit volgens Nederlandse regels/wetgeving?
+  * Tips en tricks voor ZZP'ers
+  * BTW-gerelateerde vragen indien relevant
+- Vermijd voor de hand liggende of triviale vragen
 
-SVAR FORMAT (kun JSON):
+ANTWOORDFORMAAT (alleen JSON):
 {
   "faqs": [
     {
-      "question": "Spørgsmål på dansk?",
-      "answer": "Svar på dansk."
+      "question": "Vraag in het Nederlands?",
+      "answer": "Antwoord in het Nederlands."
     }
   ]
 }
 
-Skriv HELE svaret på perfekt dansk. Kun JSON, ingen markdown.`
+Schrijf het HELE antwoord in perfect Nederlands. Alleen JSON, geen markdown.`
 }
 
-// Prompt 4: Additional Info (Yderligere information)
+// Prompt 4: Additional Info (Aanvullende informatie)
 function createAdditionalInfoPrompt(keyword: string, description: string, category: string, previousContent: string): string {
-  return `Du er content writer for en dansk finansiel hjemmeside.
+  return `Je bent een content writer voor een Nederlandse financiële website voor ZZP'ers en kleine ondernemers.
 
-OPGAVE: Skriv en "Yderligere information" sektion for: ${keyword}
+OPDRACHT: Schrijf een "Aanvullende informatie" sectie voor: ${keyword}
 
-INFORMATION:
-- Emne: ${keyword}
-- Beskrivelse: ${description}
-- Kategori: ${category}
+INFORMATIE:
+- Onderwerp: ${keyword}
+- Beschrijving: ${description}
+- Categorie: ${category}
 
-TIDLIGERE INDHOLD (for kontekst):
+EERDERE INHOUD (voor context):
 ${previousContent}
 
 ${STYLE_GUIDE}
 
-INDHOLD:
-Skriv en kort, informativ tekst (max 300 tegn) om:
-- Baggrundsinformation om emnet
-- Relevant kontekst for danske forhold
-- Lovgivning eller regler hvis relevant
-- Praktiske tips eller anbefalinger
-- Hvorfor det er vigtigt
+INHOUD:
+Schrijf een korte, informatieve tekst (max 300 tekens) over:
+- Achtergrondinformatie over het onderwerp
+- Relevante context voor Nederlandse omstandigheden
+- Wetgeving of regels indien relevant (bijv. Belastingdienst richtlijnen, BTW-regels)
+- Praktische tips of aanbevelingen voor ZZP'ers
+- Waarom het belangrijk is voor zelfstandigen
 
-Giv sektionen en passende overskrift (4-6 ord).
+Geef de sectie een passende titel (4-6 woorden).
 
-SVAR FORMAT (kun JSON):
+ANTWOORDFORMAAT (alleen JSON):
 {
   "additionalInfo": {
-    "title": "Overskrift på dansk",
-    "content": "Indhold på dansk (max 300 tegn)"
+    "title": "Titel in het Nederlands",
+    "content": "Inhoud in het Nederlands (max 300 tekens)"
   }
 }
 
-Skriv HELE svaret på perfekt dansk. Kun JSON, ingen markdown.`
+Schrijf het HELE antwoord in perfect Nederlands. Alleen JSON, geen markdown.`
 }
 
-// Prompt 5: Meta SEO (Titel og beskrivelse)
+// Prompt 5: Meta SEO (Titel en beschrijving)
 function createMetaSEOPrompt(keyword: string, description: string, previousContent: string): string {
-  return `Du er SEO-specialist for en dansk hjemmeside.
+  return `Je bent een SEO-specialist voor een Nederlandse website voor ZZP'ers.
 
-OPGAVE: Skriv SEO-optimeret meta titel, beskrivelse og side-titler for: ${keyword}
+OPDRACHT: Schrijf SEO-geoptimaliseerde meta titel, beschrijving en pagina titels voor: ${keyword}
 
-INFORMATION:
-- Primær keyword: ${keyword}
-- Beskrivelse: ${description}
+INFORMATIE:
+- Primair keyword: ${keyword}
+- Beschrijving: ${description}
 
-TIDLIGERE INDHOLD (for kontekst):
+EERDERE INHOUD (voor context):
 ${previousContent}
 
-KRAV FOR META TITEL:
-- Længde: 50-60 tegn (tættere på 60 er bedre)
-- SKAL inkludere ordet "Kalkulator"
-- Skal være naturlig og læsbar (UNDGÅ "beregn X med kalkulator" - det er for redundant)
-- Fokus på værdi og resultat, ikke kun på værktøjet
-- UNDGÅ "PengeKalkulator" eller brand navn
-- Vær specifik og fængende
+EISEN VOOR META TITEL:
+- Lengte: 50-60 tekens (dichter bij 60 is beter)
+- MOET het woord "Calculator" bevatten
+- Moet natuurlijk en leesbaar zijn (VERMIJD "bereken X met calculator" - dat is te overbodig)
+- Focus op waarde en resultaat, niet alleen op het hulpmiddel
+- VERMIJD "ZZPBereken" of merknaam
+- Wees specifiek en aantrekkelijk
 
-KRAV FOR META BESKRIVELSE:
-- Længde: 140-155 tegn (tættere på 155 er bedre)
-- Skal være actionorienteret og fængende
-- Inkluder fordele/resultater
-- Skal få folk til at klikke
-- Undgå generiske fraser som "hurtigt overblik" eller "prøv vores"
-- Vær konkret om hvad brugeren får
+EISEN VOOR META BESCHRIJVING:
+- Lengte: 140-155 tekens (dichter bij 155 is beter)
+- Moet actiegericht en aantrekkelijk zijn
+- Voeg voordelen/resultaten toe
+- Moet mensen aanzetten om te klikken
+- Vermijd generieke zinnen zoals "snel overzicht" of "probeer onze"
+- Wees concreet over wat de gebruiker krijgt
+- Voor ZZP-calculators: vermeld relevantie voor zelfstandigen
 
-GODE EKSEMPLER:
-- Keyword: "procent"
-  → Meta titel: "Procent Kalkulator - Beregn Stigning, Fald og Forskel"
-  → Meta beskrivelse: "Præcis procentberegning med trin-for-trin forklaring. Beregn stigning, fald, procent af beløb og procentforskel. Gratis og nem at bruge."
+GOEDE VOORBEELDEN:
+- Keyword: "btw berekenen"
+  → Meta titel: "BTW Calculator - Bereken 21% en 9% BTW Direct"
+  → Meta beschrijving: "Bereken BTW snel en nauwkeurig. Inclusief en exclusief BTW berekenen voor 21% en 9% tarief. Ideaal voor ZZP'ers en ondernemers. Gratis en eenvoudig."
 
-- Keyword: "løn efter skat"
-  → Meta titel: "Løn efter Skat Kalkulator - Beregn Din Nettoløn 2025"
-  → Meta beskrivelse: "Beregn præcist hvad du får udbetalt efter AM-bidrag og skat. Inkluderer fradrag og følger gældende skattesatser. Nemt og nøjagtigt."
+- Keyword: "uurloon"
+  → Meta titel: "Uurloon Calculator - Bereken Je ZZP Uurtarief 2025"
+  → Meta beschrijving: "Bereken je ideale uurloon als ZZP'er. Inclusief kosten, belastingen en gewenste winst. Volgt Nederlandse wetgeving. Gratis calculator."
 
-- Keyword: "indlånsrente"
-  → Meta titel: "Indlånsrente Kalkulator - Beregn Dit Bankafkast"
-  → Meta beskrivelse: "Beregn dit reelle afkast på bankopsparing inkl. renter, månedlige indskud og kapitalindkomstskat. Se hvordan din opsparing vokser over tid."
+- Keyword: "inkomstenbelasting"
+  → Meta titel: "Inkomstenbelasting Calculator - Bereken Je Aanslag 2025"
+  → Meta beschrijving: "Bereken precies je inkomstenbelasting over 2025. Inclusief schijven, heffingskortingen en aftrekposten. Voor ZZP'ers en werknemers. Actueel en betrouwbaar."
 
-DÅRLIGE EKSEMPLER (UNDGÅ):
-❌ "Beregn indlånsrente med Kalkulator" (for kort og redundant)
-❌ "Få hurtigt overblik over dit bankafkast. Prøv vores kalkulator!" (generisk og for kort)
+SLECHTE VOORBEELDEN (VERMIJD):
+❌ "Bereken BTW met Calculator" (te kort en overbodig)
+❌ "Krijg snel inzicht in je BTW. Probeer onze calculator!" (generiek en te kort)
 
-H1 og H2:
-- H1: skal starte med "Beregn" efterfulgt af keyword (f.eks. "Beregn indlånsrente")
-- H2: skal være keyword efterfulgt af "Kalkulator" med stort K (f.eks. "Indlånsrente Kalkulator")
+H1 en H2:
+- H1: moet beginnen met "Bereken" gevolgd door keyword (bijv. "Bereken BTW")
+- H2: moet keyword zijn gevolgd door "Calculator" met hoofdletter C (bijv. "BTW Calculator")
 
-SVAR FORMAT (kun JSON):
+ANTWOORDFORMAAT (alleen JSON):
 {
   "metadata": {
-    "title": "Meta titel (50-60 tegn - inkluder 'Kalkulator')",
-    "description": "Meta beskrivelse (140-155 tegn - konkret og actionorienteret)",
-    "h1": "Beregn [keyword]",
-    "h2": "[Keyword] Kalkulator"
+    "title": "Meta titel (50-60 tekens - voeg 'Calculator' toe)",
+    "description": "Meta beschrijving (140-155 tekens - concreet en actiegericht)",
+    "h1": "Bereken [keyword]",
+    "h2": "[Keyword] Calculator"
   }
 }
 
-Skriv HELE svaret på perfekt dansk. Kun JSON, ingen markdown.`
+Schrijf het HELE antwoord in perfect Nederlands. Alleen JSON, geen markdown.`
 }
 
 async function callOpenAI(prompt: string, section: string): Promise<any> {
-  console.log(`  → Genererer ${section}...`)
+  console.log(`  → Genereren ${section}...`)
 
   const completion = await openai.chat.completions.create({
     model: process.env.GENERATION_MODEL_OPENAI || 'gpt-4o',
     messages: [
       {
         role: 'system',
-        content: 'Du er en ekspert dansk content writer med dyb forståelse for dansk sprog, kultur og finansielle forhold. Du skriver som en indfødt dansker.'
+        content: 'Je bent een expert Nederlandse content writer met diepgaande kennis van de Nederlandse taal, cultuur en financiële omstandigheden voor ZZP\'ers. Je schrijft als een native Nederlandse ZZP-expert.'
       },
       {
         role: 'user',
@@ -274,23 +278,23 @@ async function callOpenAI(prompt: string, section: string): Promise<any> {
 }
 
 async function generateContent(slug: string): Promise<void> {
-  console.log(`\n✍️ Genererer indhold for: ${slug}`)
+  console.log(`\n✍️ Inhoud genereren voor: ${slug}`)
   console.log('━'.repeat(50))
 
   // Verificar que existe el archivo de la calculadora
   const calculatorPath = path.join(__dirname, '..', 'calculators-data', `${slug}.ts`)
   if (!fs.existsSync(calculatorPath)) {
-    throw new Error(`❌ Kalkulatoren findes ikke: ${slug}.ts\nGenerer først koden med: npm run generate:calculator -- --slug=${slug}`)
+    throw new Error(`❌ Calculator bestaat niet: ${slug}.ts\nGenereer eerst de code met: npm run generate:calculator -- --slug=${slug}`)
   }
 
   const config = getKeywordConfig(slug)
   if (!config) {
-    throw new Error(`❌ Kunne ikke finde konfiguration for: ${slug}`)
+    throw new Error(`❌ Configuratie niet gevonden voor: ${slug}`)
   }
 
   console.log(`📚 Keyword: ${config.keyword}`)
   console.log(`📈 Volume: ${config.volume}`)
-  console.log(`\n🎯 Genererer indhold med OpenAI (5 sektioner)...\n`)
+  console.log(`\n🎯 Inhoud genereren met OpenAI (5 secties)...\n`)
 
   try {
     let previousContent = ''
@@ -298,28 +302,28 @@ async function generateContent(slug: string): Promise<void> {
     // 1. How to Use
     const howToUse = await callOpenAI(
       createHowToUsePrompt(config.keyword, config.description),
-      'Sådan bruges kalkulatoren'
+      'Hoe te gebruiken'
     )
     previousContent += JSON.stringify(howToUse)
 
     // 2. Examples
     const examples = await callOpenAI(
       createExamplesPrompt(config.keyword, config.description, previousContent),
-      'Eksempler'
+      'Voorbeelden'
     )
     previousContent += JSON.stringify(examples)
 
     // 3. FAQs
     const faqs = await callOpenAI(
       createFAQsPrompt(config.keyword, config.description, previousContent),
-      'Ofte stillede spørgsmål'
+      'Veelgestelde vragen'
     )
     previousContent += JSON.stringify(faqs)
 
     // 4. Additional Info
     const additionalInfo = await callOpenAI(
       createAdditionalInfoPrompt(config.keyword, config.description, config.category, previousContent),
-      'Yderligere information'
+      'Aanvullende informatie'
     )
     previousContent += JSON.stringify(additionalInfo)
 
@@ -329,9 +333,9 @@ async function generateContent(slug: string): Promise<void> {
       'Meta SEO'
     )
 
-    console.log(`\n✅ Alt indhold genereret!`)
-    console.log(`   - Trin: ${howToUse.steps.length}`)
-    console.log(`   - Eksempler: ${examples.examples.length}`)
+    console.log(`\n✅ Alle inhoud gegenereerd!`)
+    console.log(`   - Stappen: ${howToUse.steps.length}`)
+    console.log(`   - Voorbeelden: ${examples.examples.length}`)
     console.log(`   - FAQ: ${faqs.faqs.length}`)
     console.log(`   - Meta titel: ${metadata.metadata.title}`)
     console.log(`   - H1: ${metadata.metadata.h1}`)
@@ -385,11 +389,11 @@ async function generateContent(slug: string): Promise<void> {
     // Guardar archivo actualizado
     fs.writeFileSync(calculatorPath, calculatorContent, 'utf-8')
 
-    console.log(`\n💾 Fil opdateret: calculators-data/${slug}.ts`)
-    console.log(`✨ Indhold færdigt!\n`)
+    console.log(`\n💾 Bestand bijgewerkt: calculators-data/${slug}.ts`)
+    console.log(`✨ Inhoud klaar!\n`)
 
   } catch (error: any) {
-    console.error(`\n❌ Fejl ved generering:`)
+    console.error(`\n❌ Fout bij genereren:`)
     console.error(error.message)
     if (error.response) {
       console.error('Response:', error.response)
@@ -404,16 +408,16 @@ async function main() {
 
   if (args.length === 0 || args[0] === '--help') {
     console.log(`
-📝 Indhold Generator med OpenAI
+📝 Inhoud Generator met OpenAI
 
-Brug:
+Gebruik:
   npm run generate:content -- --slug=SLUG
 
-Eksempler:
-  npm run generate:content -- --slug=procent
-  npm run generate:content -- --slug=lon-efter-skat
+Voorbeelden:
+  npm run generate:content -- --slug=btw-berekenen
+  npm run generate:content -- --slug=uurloon-calculator
 
-Note: Generer først kalkulatorkoden med:
+Note: Genereer eerst de calculator code met:
   npm run generate:calculator -- --slug=SLUG
     `)
     process.exit(0)
@@ -421,7 +425,7 @@ Note: Generer først kalkulatorkoden med:
 
   const slugArg = args.find(arg => arg.startsWith('--slug='))
   if (!slugArg) {
-    console.error('❌ Fejl: Du skal angive --slug=SLUG')
+    console.error('❌ Fout: Je moet --slug=SLUG specificeren')
     process.exit(1)
   }
 

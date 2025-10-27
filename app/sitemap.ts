@@ -3,7 +3,7 @@ import { getGeneratedCalculators } from '@/lib/generated-calculators'
 import { getAllCategorySlugs } from '@/lib/categories'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://pengekalkulator.com'
+  const baseUrl = 'https://zzpbereken.com'
 
   // Get all generated calculators dynamically
   const calculators = await getGeneratedCalculators()
@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Calculator URLs
   const calculatorUrls = calculatorSlugs.map((slug) => ({
-    url: `${baseUrl}/beregn/${slug}`,
+    url: `${baseUrl}/bereken/${slug}`,
     lastModified: new Date(calculators[slug].generatedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Category URLs
   const categoryUrls = categorySlugs.map((slug) => ({
-    url: `${baseUrl}/kategori/${slug}`,
+    url: `${baseUrl}/categorie/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,

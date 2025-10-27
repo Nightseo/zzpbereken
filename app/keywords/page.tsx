@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { keywordsConfig } from '@/scripts/keywords-config'
 
 interface KeywordData {
   id: number
@@ -13,6 +14,7 @@ interface KeywordData {
   difficulty: string
   kwCount: number
   priority: 'ALTA' | 'MEDIA' | 'BAJA'
+  category: string
   status: 'pending' | 'in-progress' | 'done'
   isGenerated?: boolean
 }
@@ -21,27 +23,20 @@ export default function KeywordsPage() {
   const [sortBy, setSortBy] = useState<'volume' | 'difficulty' | 'priority'>('volume')
   const [filterPriority, setFilterPriority] = useState<string>('all')
   const [filterStatus, setFilterStatus] = useState<string>('all')
+  const [filterCategory, setFilterCategory] = useState<string>('all')
 
-  const initialData: KeywordData[] = [
-    { id: 1, url: '/beregn/lon-efter-skat', keyword: 'beregn løn efter skat', volume: 12000, difficulty: '7', kwCount: 26, priority: 'ALTA', status: 'pending' },
-    { id: 2, url: '/beregn/procent', keyword: 'beregn procent', volume: 1200, difficulty: '2', kwCount: 18, priority: 'ALTA', status: 'pending' },
-    { id: 3, url: '/beregn/flexjob-lon', keyword: 'beregn fleksjob', volume: 550, difficulty: '3-4', kwCount: 8, priority: 'MEDIA', status: 'pending' },
-    { id: 4, url: '/beregn/enhedspris', keyword: 'beregn kilopris', volume: 520, difficulty: '0-2', kwCount: 6, priority: 'MEDIA', status: 'pending' },
-    { id: 5, url: '/beregn/renters-rente', keyword: 'beregn renters rente', volume: 280, difficulty: '0', kwCount: 2, priority: 'MEDIA', status: 'pending' },
-    { id: 6, url: '/beregn/deltidslon', keyword: 'beregn deltidsløn', volume: 170, difficulty: '0-2', kwCount: 4, priority: 'BAJA', status: 'pending' },
-    { id: 7, url: '/beregn/procesrente', keyword: 'beregn procesrente', volume: 150, difficulty: '0', kwCount: 3, priority: 'BAJA', status: 'pending' },
-    { id: 8, url: '/beregn/daekningsbidrag', keyword: 'beregn dækningsbidrag', volume: 100, difficulty: '0', kwCount: 1, priority: 'BAJA', status: 'pending' },
-    { id: 9, url: '/beregn/opsparing', keyword: 'beregn opsparing', volume: 100, difficulty: '1', kwCount: 1, priority: 'BAJA', status: 'pending' },
-    { id: 10, url: '/beregn/inflation', keyword: 'beregn inflation', volume: 90, difficulty: '2', kwCount: 2, priority: 'BAJA', status: 'pending' },
-    { id: 11, url: '/beregn/husleje', keyword: 'beregn husleje', volume: 80, difficulty: '0', kwCount: 1, priority: 'BAJA', status: 'pending' },
-    { id: 12, url: '/beregn/moms', keyword: 'beregn moms', volume: 70, difficulty: '2-5', kwCount: 3, priority: 'BAJA', status: 'pending' },
-    { id: 13, url: '/beregn/feriedage', keyword: 'beregn feriedage', volume: 60, difficulty: '0', kwCount: 2, priority: 'BAJA', status: 'pending' },
-    { id: 14, url: '/beregn/fleksydelse', keyword: 'beregn fleksydelse', volume: 30, difficulty: '2', kwCount: 1, priority: 'BAJA', status: 'pending' },
-    { id: 15, url: '/beregn/flexleasing', keyword: 'beregn flexleasing', volume: 30, difficulty: '0', kwCount: 1, priority: 'BAJA', status: 'pending' },
-    { id: 16, url: '/beregn/lonstigning', keyword: 'beregn lønstigning', volume: 20, difficulty: '1', kwCount: 1, priority: 'BAJA', status: 'pending' },
-    { id: 17, url: '/beregn/nutidsvaerdi', keyword: 'beregn nutidsværdi', volume: 20, difficulty: '0', kwCount: 1, priority: 'BAJA', status: 'pending' },
-    { id: 18, url: '/beregn/indlaansrente', keyword: 'beregn indlånsrente', volume: 10, difficulty: '2', kwCount: 1, priority: 'BAJA', status: 'pending' },
-  ]
+  const initialData: KeywordData[] = keywordsConfig.map(kw => ({
+    id: kw.id,
+    url: kw.url,
+    keyword: kw.keyword,
+    volume: kw.volume,
+    difficulty: kw.difficulty,
+    kwCount: kw.kwCount,
+    priority: kw.priority,
+    category: kw.category,
+    status: 'pending' as const,
+    isGenerated: false
+  }))
 
   const [data, setData] = useState<KeywordData[]>(initialData)
   const [generating, setGenerating] = useState<number | null>(null)
@@ -52,7 +47,7 @@ export default function KeywordsPage() {
     const checkCalculators = async () => {
       const checks = await Promise.all(
         initialData.map(async (item) => {
-          const slug = item.url.replace('/beregn/', '')
+          const slug = item.url.replace('/bereken/', '')
           try {
             const response = await fetch('/api/check-calculator', {
               method: 'POST',
@@ -87,8 +82,12 @@ export default function KeywordsPage() {
   }).filter(item => {
     if (filterPriority !== 'all' && item.priority !== filterPriority) return false
     if (filterStatus !== 'all' && item.status !== filterStatus) return false
+    if (filterCategory !== 'all' && item.category !== filterCategory) return false
     return true
   })
+
+  // Get unique categories
+  const categories = Array.from(new Set(data.map(item => item.category))).sort()
 
   const toggleStatus = (id: number) => {
     setData(data.map(item => {
@@ -121,7 +120,7 @@ export default function KeywordsPage() {
   }
 
   const generateCalculator = async (id: number, url: string) => {
-    const slug = url.replace('/beregn/', '')
+    const slug = url.replace('/bereken/', '')
     setGenerating(id)
 
     // Mark as in-progress
@@ -143,19 +142,19 @@ export default function KeywordsPage() {
         setData(data.map(item =>
           item.id === id ? { ...item, status: 'done', isGenerated: true } : item
         ))
-        alert(`✅ Calculadora generada exitosamente: ${slug}`)
+        alert(`✅ Calculator succesvol gegenereerd: ${slug}`)
       } else {
         // Mark as pending again
         setData(data.map(item =>
           item.id === id ? { ...item, status: 'pending' } : item
         ))
-        alert(`❌ Error: ${result.error}`)
+        alert(`❌ Fout: ${result.error}`)
       }
     } catch (error: any) {
       setData(data.map(item =>
         item.id === id ? { ...item, status: 'pending' } : item
       ))
-      alert(`❌ Error: ${error.message}`)
+      alert(`❌ Fout: ${error.message}`)
     } finally {
       setGenerating(null)
     }
@@ -167,62 +166,76 @@ export default function KeywordsPage() {
       <main className="flex-1 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">URLs a Generar</h1>
-            <p className="text-lg text-gray-600">Gestión de las 18 calculadoras basadas en análisis de keywords</p>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">ZZP Calculators - Keywords Overzicht</h1>
+            <p className="text-lg text-gray-600">Beheer van {data.length} calculators gebaseerd op keyword analyse</p>
           </div>
 
-          {/* Filtros y ordenación */}
+          {/* Filters en sortering */}
           <div className="bg-white border border-gray-200 p-6 mb-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="flex flex-wrap gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Ordenar por:</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Sorteer op:</label>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
                     className="border border-gray-300 px-4 py-2 text-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-100 focus:outline-none"
                   >
-                    <option value="volume">Volumen (mayor a menor)</option>
-                    <option value="priority">Prioridad</option>
+                    <option value="volume">Volume (hoog naar laag)</option>
+                    <option value="priority">Prioriteit</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Filtrar por prioridad:</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Filter op categorie:</label>
+                  <select
+                    value={filterCategory}
+                    onChange={(e) => setFilterCategory(e.target.value)}
+                    className="border border-gray-300 px-4 py-2 text-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-100 focus:outline-none"
+                  >
+                    <option value="all">Alle categorieën</option>
+                    {categories.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Filter op prioriteit:</label>
                   <select
                     value={filterPriority}
                     onChange={(e) => setFilterPriority(e.target.value)}
                     className="border border-gray-300 px-4 py-2 text-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-100 focus:outline-none"
                   >
-                    <option value="all">Todas</option>
-                    <option value="ALTA">Alta</option>
-                    <option value="MEDIA">Media</option>
-                    <option value="BAJA">Baja</option>
+                    <option value="all">Alle prioriteiten</option>
+                    <option value="ALTA">Hoog</option>
+                    <option value="MEDIA">Midden</option>
+                    <option value="BAJA">Laag</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Filtrar por estado:</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Filter op status:</label>
                   <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
                     className="border border-gray-300 px-4 py-2 text-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-100 focus:outline-none"
                   >
-                    <option value="all">Todos</option>
-                    <option value="pending">Pendiente</option>
-                    <option value="in-progress">En progreso</option>
-                    <option value="done">Completado</option>
+                    <option value="all">Alle statussen</option>
+                    <option value="pending">In afwachting</option>
+                    <option value="in-progress">Bezig</option>
+                    <option value="done">Voltooid</option>
                   </select>
                 </div>
               </div>
 
               <div className="text-sm text-gray-600">
-                Mostrando <span className="font-bold text-primary-600">{sortedData.length}</span> de <span className="font-bold">{data.length}</span> URLs
+                <span className="font-bold text-primary-600">{sortedData.length}</span> van <span className="font-bold">{data.length}</span> calculators
               </div>
             </div>
           </div>
 
-          {/* Tabla de URLs */}
+          {/* Tabel van calculators */}
           <div className="bg-white border border-gray-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -230,13 +243,14 @@ export default function KeywordsPage() {
                   <tr>
                     <th className="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">#</th>
                     <th className="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">URL</th>
-                    <th className="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Keyword Principal</th>
+                    <th className="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Primair Keyword</th>
+                    <th className="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Categorie</th>
                     <th className="px-4 py-4 text-right text-xs font-bold text-gray-700 uppercase tracking-wider">Volume</th>
                     <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">Diff</th>
                     <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">KWs</th>
-                    <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">Prioridad</th>
-                    <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">Estado</th>
-                    <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">Acciones</th>
+                    <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">Prioriteit</th>
+                    <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">Status</th>
+                    <th className="px-4 py-4 text-center text-xs font-bold text-gray-700 uppercase tracking-wider">Acties</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -249,6 +263,11 @@ export default function KeywordsPage() {
                         </code>
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-900">{item.keyword}</td>
+                      <td className="px-4 py-4">
+                        <span className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 border border-gray-200">
+                          {item.category}
+                        </span>
+                      </td>
                       <td className="px-4 py-4 text-right">
                         <span className="text-sm font-bold text-gray-900">
                           {item.volume >= 1000 ? `${(item.volume / 1000).toFixed(1)}K` : item.volume}
@@ -271,7 +290,7 @@ export default function KeywordsPage() {
                           className={`inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium transition-all hover:opacity-80 ${getStatusColor(item.status)}`}
                         >
                           <span className="text-base leading-none">{getStatusIcon(item.status)}</span>
-                          <span className="capitalize">{item.status === 'in-progress' ? 'progreso' : item.status === 'done' ? 'hecho' : 'pendiente'}</span>
+                          <span className="capitalize">{item.status === 'in-progress' ? 'bezig' : item.status === 'done' ? 'voltooid' : 'in afwachting'}</span>
                         </button>
                       </td>
                       <td className="px-4 py-4 text-center">
@@ -283,7 +302,7 @@ export default function KeywordsPage() {
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
-                            <span>Ver calculadora</span>
+                            <span>Bekijk calculator</span>
                           </Link>
                         ) : (
                           <button
@@ -297,12 +316,12 @@ export default function KeywordsPage() {
                                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
-                                <span>Generando...</span>
+                                <span>Genereren...</span>
                               </span>
                             ) : checking ? (
-                              'Verificando...'
+                              'Controleren...'
                             ) : (
-                              'Generar'
+                              'Genereren'
                             )}
                           </button>
                         )}
@@ -314,27 +333,27 @@ export default function KeywordsPage() {
             </div>
           </div>
 
-          {/* Stats rápidas */}
+          {/* Snelle statistieken */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
             <div className="bg-white border border-gray-200 p-4">
               <div className="text-2xl font-bold text-primary-600">{data.filter(d => d.status === 'done').length}/{data.length}</div>
-              <div className="text-sm text-gray-600 mt-1">Completadas</div>
+              <div className="text-sm text-gray-600 mt-1">Voltooid</div>
             </div>
             <div className="bg-white border border-gray-200 p-4">
               <div className="text-2xl font-bold text-primary-600">
                 {(data.reduce((acc, item) => acc + item.volume, 0) / 1000).toFixed(1)}K
               </div>
-              <div className="text-sm text-gray-600 mt-1">Volume Total</div>
+              <div className="text-sm text-gray-600 mt-1">Totaal Volume</div>
             </div>
             <div className="bg-white border border-gray-200 p-4">
               <div className="text-2xl font-bold text-primary-600">
                 {data.reduce((acc, item) => acc + item.kwCount, 0)}
               </div>
-              <div className="text-sm text-gray-600 mt-1">Keywords Total</div>
+              <div className="text-sm text-gray-600 mt-1">Totaal Keywords</div>
             </div>
             <div className="bg-white border border-gray-200 p-4">
               <div className="text-2xl font-bold text-primary-600">{data.filter(d => d.priority === 'ALTA').length}</div>
-              <div className="text-sm text-gray-600 mt-1">Alta Prioridad</div>
+              <div className="text-sm text-gray-600 mt-1">Hoge Prioriteit</div>
             </div>
           </div>
         </div>

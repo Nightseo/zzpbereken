@@ -1,10 +1,49 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { categories } from '@/lib/categories'
+import { keywordsConfig } from '@/scripts/keywords-config'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [categoriesOpen, setCategoriesOpen] = useState(false)
+  const [calculatorsOpen, setCalculatorsOpen] = useState(false)
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const calcCloseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Get latest 5 calculators
+  const latestCalculators = [...keywordsConfig]
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 5)
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+    setCategoriesOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setCategoriesOpen(false)
+    }, 150)
+  }
+
+  const handleCalcMouseEnter = () => {
+    if (calcCloseTimeoutRef.current) {
+      clearTimeout(calcCloseTimeoutRef.current)
+      calcCloseTimeoutRef.current = null
+    }
+    setCalculatorsOpen(true)
+  }
+
+  const handleCalcMouseLeave = () => {
+    calcCloseTimeoutRef.current = setTimeout(() => {
+      setCalculatorsOpen(false)
+    }, 150)
+  }
 
   return (
     <header className="border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
@@ -18,24 +57,98 @@ export default function Header() {
             </div>
             <div className="min-w-0">
               <div className="text-base md:text-xl font-bold text-gray-900 tracking-tight truncate">
-                Penge<span className="text-primary-600">Kalkulator</span>
+                ZZP<span className="text-primary-600">Bereken</span>
               </div>
-              <div className="hidden sm:block text-xs text-gray-500 font-medium">Professionel beregning</div>
+              <div className="hidden sm:block text-xs text-gray-500 font-medium">Professioneel rekenen</div>
             </div>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-1">
             <Link href="/" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all">
-              Forside
+              Home
             </Link>
-            <Link href="/#kalkulatorer" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all">
-              Kalkulatorer
-            </Link>
+
+            {/* Calculators Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={handleCalcMouseEnter}
+              onMouseLeave={handleCalcMouseLeave}
+            >
+              <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all inline-flex items-center">
+                Calculators
+                <svg className={`ml-1 w-4 h-4 transition-transform ${calculatorsOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {calculatorsOpen && (
+                <div className="absolute top-full left-0 w-80 bg-white shadow-xl border border-gray-200 py-2">
+                  <div className="px-4 py-2 border-b border-gray-200">
+                    <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Nieuwste Calculators</div>
+                  </div>
+                  {latestCalculators.map((calc) => (
+                    <Link
+                      key={calc.id}
+                      href={calc.url}
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all border-b border-gray-100 last:border-b-0"
+                    >
+                      <div className="font-semibold">{calc.keyword}</div>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-xs text-gray-500">{calc.category}</span>
+                        <span className="text-xs text-gray-400">•</span>
+                        <span className="text-xs text-gray-500">{calc.volume >= 1000 ? `${(calc.volume / 1000).toFixed(1)}K` : calc.volume} zoekvolume</span>
+                      </div>
+                    </Link>
+                  ))}
+                  <Link
+                    href="/bereken"
+                    className="block px-4 py-3 text-sm font-semibold text-primary-600 hover:bg-primary-50 transition-all border-t border-gray-200"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>Bekijk alle calculators</span>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Categories Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all inline-flex items-center">
+                Categorieën
+                <svg className={`ml-1 w-4 h-4 transition-transform ${categoriesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {categoriesOpen && (
+                <div className="absolute top-full left-0 w-64 bg-white shadow-xl border border-gray-200 py-2">
+                  {Object.values(categories).map((category) => (
+                    <Link
+                      key={category.slug}
+                      href={`/categorie/${category.slug}`}
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all"
+                    >
+                      <div className="font-semibold">{category.name}</div>
+                      <div className="text-xs text-gray-500 mt-0.5 line-clamp-1">{category.description}</div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link href="/#features" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all">
-              Fordele
+              Voordelen
             </Link>
-            <a href="#kalkulatorer" className="ml-4 px-6 py-2.5 bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-all">
-              Kom i gang
+            <a href="#calculators" className="ml-4 px-6 py-2.5 bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-all">
+              Aan de slag
             </a>
           </nav>
 
@@ -66,28 +179,60 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all"
               >
-                Forside
+                Home
               </Link>
-              <Link
-                href="/#kalkulatorer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all"
-              >
-                Kalkulatorer
-              </Link>
+
+              {/* Calculators in mobile */}
+              <div className="px-4 py-2">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Nieuwste Calculators</div>
+                {latestCalculators.map((calc) => (
+                  <Link
+                    key={calc.id}
+                    href={calc.url}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-3 py-2 text-sm text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-all"
+                  >
+                    <div className="font-medium">{calc.keyword}</div>
+                    <div className="text-xs text-gray-500 mt-0.5">{calc.category}</div>
+                  </Link>
+                ))}
+                <Link
+                  href="/bereken"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-2 mt-2 text-sm font-semibold text-primary-600 hover:bg-primary-50 transition-all"
+                >
+                  Bekijk alle calculators →
+                </Link>
+              </div>
+
+              {/* Categories in mobile */}
+              <div className="px-4 py-2">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Categorieën</div>
+                {Object.values(categories).map((category) => (
+                  <Link
+                    key={category.slug}
+                    href={`/categorie/${category.slug}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-3 py-2 text-sm text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-all"
+                  >
+                    {category.name}
+                  </Link>
+                ))}
+              </div>
+
               <Link
                 href="/#features"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all"
               >
-                Fordele
+                Voordelen
               </Link>
               <a
-                href="#kalkulatorer"
+                href="#calculators"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mx-4 mt-2 px-6 py-3 bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-all text-center"
               >
-                Kom i gang
+                Aan de slag
               </a>
             </nav>
           </div>

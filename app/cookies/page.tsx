@@ -4,10 +4,10 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Cookiepolitik - PengeKalkulator',
-  description: 'Information om hvordan PengeKalkulator bruger cookies og lignende teknologier på vores hjemmeside.',
+  title: 'Cookiebeleid - ZZP Bereken',
+  description: 'Informatie over hoe ZZP Bereken cookies en vergelijkbare technologieën gebruikt op onze website.',
   alternates: {
-    canonical: 'https://pengekalkulator.com/cookies',
+    canonical: 'https://zzpbereken.com/cookies',
   },
 }
 
@@ -20,10 +20,10 @@ export default function CookiesPage() {
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Cookiepolitik
+              Cookiebeleid
             </h1>
             <p className="text-lg text-gray-600">
-              Sidst opdateret: {new Date().toLocaleDateString('da-DK', { year: 'numeric', month: 'long', day: 'numeric' })}
+              Laatst bijgewerkt: {new Date().toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </div>
         </div>
@@ -35,141 +35,141 @@ export default function CookiesPage() {
             <section className="mb-12">
               <div className="bg-primary-50 border-l-4 border-primary-600 p-6 mb-8">
                 <p className="text-gray-800 leading-relaxed">
-                  Denne cookiepolitik forklarer, hvad cookies er, hvordan vi bruger dem på PengeKalkulator.com,
-                  og hvordan du kan styre dine cookieindstillinger. Ved at bruge vores hjemmeside accepterer du
-                  brugen af cookies i overensstemmelse med denne politik.
+                  Dit cookiebeleid legt uit wat cookies zijn, hoe we ze gebruiken op ZZPBereken.com,
+                  en hoe u uw cookie-instellingen kunt beheren. Door gebruik te maken van onze website
+                  accepteert u het gebruik van cookies in overeenstemming met dit beleid.
                 </p>
               </div>
             </section>
 
-            {/* Hvad er cookies */}
+            {/* Wat zijn cookies */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Hvad er cookies?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Wat zijn cookies?</h2>
               <p className="text-gray-700 mb-4">
-                Cookies er små tekstfiler, der gemmes på din computer, tablet eller mobiltelefon, når du besøger en hjemmeside.
-                Cookies gør det muligt for hjemmesiden at genkende din enhed og huske dine præferencer eller handlinger over tid.
+                Cookies zijn kleine tekstbestanden die op uw computer, tablet of mobiele telefoon worden opgeslagen wanneer u een website bezoekt.
+                Cookies stellen de website in staat om uw apparaat te herkennen en uw voorkeuren of acties in de loop van de tijd te onthouden.
               </p>
               <div className="bg-gray-50 border border-gray-200 p-6">
-                <h3 className="font-semibold text-gray-900 mb-3">Cookies kan være:</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Cookies kunnen zijn:</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li><strong>Session cookies:</strong> Midlertidige cookies, der slettes, når du lukker din browser.</li>
-                  <li><strong>Persistente cookies:</strong> Forbliver på din enhed i en bestemt periode eller indtil du sletter dem manuelt.</li>
-                  <li><strong>Førstepartscookies:</strong> Sat af den hjemmeside, du besøger.</li>
-                  <li><strong>Tredjepartscookies:</strong> Sat af eksterne tjenester på hjemmesiden.</li>
+                  <li><strong>Sessiecookies:</strong> Tijdelijke cookies die worden verwijderd wanneer u uw browser sluit.</li>
+                  <li><strong>Permanente cookies:</strong> Blijven op uw apparaat gedurende een bepaalde periode of totdat u ze handmatig verwijdert.</li>
+                  <li><strong>Eerste-partij cookies:</strong> Geplaatst door de website die u bezoekt.</li>
+                  <li><strong>Derde-partij cookies:</strong> Geplaatst door externe diensten op de website.</li>
                 </ul>
               </div>
             </section>
 
-            {/* Hvorfor bruger vi cookies */}
+            {/* Waarom gebruiken we cookies */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Hvorfor bruger vi cookies?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Waarom gebruiken we cookies?</h2>
               <p className="text-gray-700 mb-6">
-                På PengeKalkulator bruger vi cookies til følgende formål:
+                Op ZZP Bereken gebruiken we cookies voor de volgende doeleinden:
               </p>
 
               <div className="space-y-4">
                 <div className="border-l-4 border-green-500 bg-green-50 p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">✓ Nødvendige cookies</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">✓ Noodzakelijke cookies</h3>
                   <p className="text-gray-700 text-sm mb-2">
-                    Disse cookies er essentielle for, at hjemmesiden kan fungere korrekt.
+                    Deze cookies zijn essentieel voor het correct functioneren van de website.
                   </p>
                   <ul className="text-gray-700 text-sm list-disc pl-5 space-y-1">
-                    <li>Huske dine cookieindstillinger</li>
-                    <li>Sikre sikker forbindelse (HTTPS)</li>
-                    <li>Bevare sessionstilstand</li>
+                    <li>Onthouden van uw cookie-instellingen</li>
+                    <li>Zorgen voor veilige verbinding (HTTPS)</li>
+                    <li>Behouden van sessiestatus</li>
                   </ul>
                   <p className="text-gray-600 text-xs mt-2">
-                    <strong>Varighed:</strong> Session eller op til 1 år<br />
-                    <strong>Samtykke påkrævet:</strong> Nej (teknisk nødvendige)
+                    <strong>Duur:</strong> Sessie of tot 1 jaar<br />
+                    <strong>Toestemming vereist:</strong> Nee (technisch noodzakelijk)
                   </p>
                 </div>
 
                 <div className="border-l-4 border-blue-500 bg-blue-50 p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">📊 Funktionelle cookies</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">📊 Functionele cookies</h3>
                   <p className="text-gray-700 text-sm mb-2">
-                    Disse cookies forbedrer hjemmesidens funktionalitet og brugeroplevelse.
+                    Deze cookies verbeteren de functionaliteit en gebruikerservaring van de website.
                   </p>
                   <ul className="text-gray-700 text-sm list-disc pl-5 space-y-1">
-                    <li>Huske dine valg og præferencer</li>
-                    <li>Gemme kalkulatorindstillinger lokalt</li>
-                    <li>Tilpasse indhold til dine behov</li>
+                    <li>Onthouden van uw keuzes en voorkeuren</li>
+                    <li>Lokaal opslaan van calculator-instellingen</li>
+                    <li>Aanpassen van inhoud aan uw behoeften</li>
                   </ul>
                   <p className="text-gray-600 text-xs mt-2">
-                    <strong>Varighed:</strong> Op til 1 år<br />
-                    <strong>Samtykke påkrævet:</strong> Ja
+                    <strong>Duur:</strong> Tot 1 jaar<br />
+                    <strong>Toestemming vereist:</strong> Ja
                   </p>
                 </div>
 
                 <div className="border-l-4 border-purple-500 bg-purple-50 p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">📈 Analyse cookies</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">📈 Analytische cookies</h3>
                   <p className="text-gray-700 text-sm mb-2">
-                    Disse cookies hjælper os med at forstå, hvordan besøgende bruger hjemmesiden.
+                    Deze cookies helpen ons te begrijpen hoe bezoekers de website gebruiken.
                   </p>
                   <ul className="text-gray-700 text-sm list-disc pl-5 space-y-1">
-                    <li>Indsamle anonyme statistikker om besøgende</li>
-                    <li>Måle hjemmesidens performance</li>
-                    <li>Identificere populære sider og funktioner</li>
-                    <li>Forbedre brugeroplevelsen baseret på data</li>
+                    <li>Verzamelen van anonieme statistieken over bezoekers</li>
+                    <li>Meten van website-prestaties</li>
+                    <li>Identificeren van populaire pagina's en functies</li>
+                    <li>Verbeteren van gebruikerservaring op basis van data</li>
                   </ul>
                   <p className="text-gray-600 text-xs mt-2">
-                    <strong>Varighed:</strong> Op til 2 år<br />
-                    <strong>Samtykke påkrævet:</strong> Ja
+                    <strong>Duur:</strong> Tot 2 jaar<br />
+                    <strong>Toestemming vereist:</strong> Ja
                   </p>
                 </div>
 
                 <div className="border-l-4 border-orange-500 bg-orange-50 p-4">
                   <h3 className="font-semibold text-gray-900 mb-2">🎯 Marketing cookies</h3>
                   <p className="text-gray-700 text-sm mb-2">
-                    Vi bruger i øjeblikket IKKE marketing eller reklamecookies på PengeKalkulator.
+                    We gebruiken momenteel GEEN marketing- of reclamecookies op ZZP Bereken.
                   </p>
                   <p className="text-gray-600 text-xs mt-2">
-                    <strong>Status:</strong> Ikke i brug
+                    <strong>Status:</strong> Niet in gebruik
                   </p>
                 </div>
               </div>
             </section>
 
-            {/* Specifikke cookies */}
+            {/* Specifieke cookies */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Specifikke cookies vi bruger</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Specifieke cookies die we gebruiken</h2>
               <p className="text-gray-700 mb-6">
-                Her er en oversigt over de specifikke cookies, der kan blive sat på PengeKalkulator:
+                Hier is een overzicht van de specifieke cookies die op ZZP Bereken kunnen worden geplaatst:
               </p>
 
               <div className="overflow-x-auto">
                 <table className="min-w-full border border-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Cookie navn</th>
+                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Cookie naam</th>
                       <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Type</th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Formål</th>
-                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Varighed</th>
+                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Doel</th>
+                      <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 border-b">Duur</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     <tr className="bg-white">
                       <td className="px-4 py-3 text-sm text-gray-900 font-mono">cookie_consent</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Nødvendig</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Gemmer dine cookieindstillinger</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">1 år</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Noodzakelijk</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Slaat uw cookie-instellingen op</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">1 jaar</td>
                     </tr>
                     <tr className="bg-gray-50">
                       <td className="px-4 py-3 text-sm text-gray-900 font-mono">session_id</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Nødvendig</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Identificerer din session</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Session</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Noodzakelijk</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Identificeert uw sessie</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Sessie</td>
                     </tr>
                     <tr className="bg-white">
                       <td className="px-4 py-3 text-sm text-gray-900 font-mono">calculator_prefs</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Funktionel</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Husker kalkulatorindstillinger</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">6 måneder</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Functioneel</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Onthoudt calculator-instellingen</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">6 maanden</td>
                     </tr>
                     <tr className="bg-gray-50">
                       <td className="px-4 py-3 text-sm text-gray-900 font-mono">_analytics</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Analyse</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">Anonyme brugsstatistikker</td>
-                      <td className="px-4 py-3 text-sm text-gray-700">2 år</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Analytisch</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">Anonieme gebruiksstatistieken</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">2 jaar</td>
                     </tr>
                   </tbody>
                 </table>
@@ -178,85 +178,85 @@ export default function CookiesPage() {
 
             {/* Local Storage */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Local Storage og Session Storage</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Local Storage en Session Storage</h2>
               <p className="text-gray-700 mb-4">
-                Ud over cookies bruger vi også Local Storage og Session Storage til at gemme data lokalt i din browser:
+                Naast cookies gebruiken we ook Local Storage en Session Storage om gegevens lokaal in uw browser op te slaan:
               </p>
               <div className="bg-blue-50 border border-blue-200 p-6">
-                <h3 className="font-semibold text-gray-900 mb-3">Hvad gemmes?</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Wat wordt opgeslagen?</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>✓ Kalkulatorresultater (så du kan se tidligere beregninger)</li>
-                  <li>✓ Brugerindstillinger og præferencer</li>
-                  <li>✓ Midlertidige data under brug af kalkulatorer</li>
+                  <li>✓ Calculator-resultaten (zodat u eerdere berekeningen kunt bekijken)</li>
+                  <li>✓ Gebruikersinstellingen en voorkeuren</li>
+                  <li>✓ Tijdelijke gegevens tijdens het gebruik van calculators</li>
                 </ul>
                 <p className="text-gray-600 text-sm mt-4">
-                  <strong>Vigtigt:</strong> Alle data gemmes kun lokalt på din enhed og sendes ALDRIG til vores servere.
-                  Du kan til enhver tid rydde disse data via din browsers indstillinger.
+                  <strong>Belangrijk:</strong> Alle gegevens worden alleen lokaal op uw apparaat opgeslagen en worden NOOIT naar onze servers verzonden.
+                  U kunt deze gegevens op elk moment wissen via uw browserinstellingen.
                 </p>
               </div>
             </section>
 
-            {/* Tredjepartscookies */}
+            {/* Derde-partij cookies */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Tredjepartscookies</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Derde-partij cookies</h2>
               <p className="text-gray-700 mb-4">
-                Nogle cookies på vores hjemmeside kan blive sat af tredjepartstjenester:
+                Sommige cookies op onze website kunnen worden geplaatst door diensten van derden:
               </p>
               <div className="space-y-4">
                 <div className="border border-gray-200 p-4">
                   <h3 className="font-semibold text-gray-900 mb-2">Hosting (Vercel)</h3>
                   <p className="text-gray-700 text-sm">
-                    Vores hosting-udbyder kan sætte tekniske cookies for at sikre hjemmesidens tilgængelighed og sikkerhed.
+                    Onze hosting-provider kan technische cookies plaatsen om de beschikbaarheid en veiligheid van de website te waarborgen.
                   </p>
                 </div>
               </div>
             </section>
 
-            {/* Sådan styrer du cookies */}
+            {/* Hoe u cookies beheert */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Sådan styrer du cookies</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Hoe u cookies beheert</h2>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">6.1 Cookie-banner</h3>
               <p className="text-gray-700 mb-4">
-                Når du besøger PengeKalkulator første gang, vises en cookie-banner, hvor du kan acceptere eller afvise ikke-nødvendige cookies.
-                Du kan til enhver tid ændre dine præferencer.
+                Wanneer u ZZP Bereken voor het eerst bezoekt, wordt een cookie-banner weergegeven waar u niet-noodzakelijke cookies kunt accepteren of weigeren.
+                U kunt uw voorkeuren op elk moment wijzigen.
               </p>
 
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">6.2 Browserindstillinger</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">6.2 Browserinstellingen</h3>
               <p className="text-gray-700 mb-4">
-                Du kan også styre cookies direkte i din browsers indstillinger:
+                U kunt cookies ook rechtstreeks in uw browserinstellingen beheren:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="bg-gray-50 border border-gray-200 p-4">
                   <h4 className="font-semibold text-gray-900 mb-2">Google Chrome</h4>
                   <p className="text-gray-700 text-sm">
-                    Indstillinger → Privatliv og sikkerhed → Cookies og andre webstedsdata
+                    Instellingen → Privacy en beveiliging → Cookies en andere sitegegevens
                   </p>
                 </div>
                 <div className="bg-gray-50 border border-gray-200 p-4">
                   <h4 className="font-semibold text-gray-900 mb-2">Mozilla Firefox</h4>
                   <p className="text-gray-700 text-sm">
-                    Indstillinger → Privatliv & sikkerhed → Cookies og webstedsdata
+                    Instellingen → Privacy & Beveiliging → Cookies en sitegegevens
                   </p>
                 </div>
                 <div className="bg-gray-50 border border-gray-200 p-4">
                   <h4 className="font-semibold text-gray-900 mb-2">Safari</h4>
                   <p className="text-gray-700 text-sm">
-                    Præferencer → Privatliv → Administrer webstedsdata
+                    Voorkeuren → Privacy → Websitegegevens beheren
                   </p>
                 </div>
                 <div className="bg-gray-50 border border-gray-200 p-4">
                   <h4 className="font-semibold text-gray-900 mb-2">Microsoft Edge</h4>
                   <p className="text-gray-700 text-sm">
-                    Indstillinger → Cookies og webstedstilladelser → Administrer cookies
+                    Instellingen → Cookies en sitemachtigingen → Cookies beheren
                   </p>
                 </div>
               </div>
 
               <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4">
                 <p className="text-gray-700 text-sm">
-                  <strong>Bemærk:</strong> Hvis du blokerer eller sletter cookies, kan nogle funktioner på hjemmesiden
-                  muligvis ikke fungere korrekt.
+                  <strong>Let op:</strong> Als u cookies blokkeert of verwijdert, kunnen sommige functies van de website
+                  mogelijk niet correct werken.
                 </p>
               </div>
             </section>
@@ -265,47 +265,47 @@ export default function CookiesPage() {
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Do Not Track (DNT)</h2>
               <p className="text-gray-700">
-                Vi respekterer "Do Not Track" signaler fra din browser. Hvis du har aktiveret DNT, vil vi ikke
-                sætte analyse- eller marketingcookies på din enhed.
+                We respecteren "Do Not Track" signalen van uw browser. Als u DNT heeft ingeschakeld, zullen we geen
+                analytische of marketingcookies op uw apparaat plaatsen.
               </p>
             </section>
 
-            {/* Opdateringer */}
+            {/* Updates */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Opdateringer af cookiepolitikken</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Updates van het cookiebeleid</h2>
               <p className="text-gray-700">
-                Vi kan opdatere denne cookiepolitik fra tid til anden for at afspejle ændringer i vores praksis eller af juridiske årsager.
-                Væsentlige ændringer vil blive meddelt via hjemmesiden. Vi opfordrer dig til regelmæssigt at gennemgå denne side.
+                We kunnen dit cookiebeleid van tijd tot tijd bijwerken om wijzigingen in onze praktijken of om juridische redenen weer te geven.
+                Belangrijke wijzigingen worden via de website aangekondigd. We raden u aan deze pagina regelmatig te bekijken.
               </p>
             </section>
 
-            {/* Kontakt */}
+            {/* Contact */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Spørgsmål om cookies?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Vragen over cookies?</h2>
               <p className="text-gray-700 mb-4">
-                Har du spørgsmål til vores brug af cookies?
+                Heeft u vragen over ons gebruik van cookies?
               </p>
               <div className="bg-primary-50 border-l-4 border-primary-600 p-6">
-                <p className="text-gray-800 font-semibold mb-2">Kontakt os:</p>
+                <p className="text-gray-800 font-semibold mb-2">Neem contact met ons op:</p>
                 <p className="text-gray-700">
-                  E-mail: <a href="mailto:kontakt@pengekalkulator.com" className="text-primary-600 hover:text-primary-700 underline">kontakt@pengekalkulator.com</a>
+                  E-mail: <a href="mailto:info@zzpbereken.com" className="text-primary-600 hover:text-primary-700 underline">info@zzpbereken.com</a>
                 </p>
               </div>
             </section>
 
-            {/* Relaterede politikker */}
+            {/* Gerelateerde beleidsregels */}
             <section className="mb-12">
               <div className="bg-gray-50 border border-gray-200 p-6">
-                <h3 className="font-semibold text-gray-900 mb-3">Læs også:</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Lees ook:</h3>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="/privatlivspolitik" className="text-primary-600 hover:text-primary-700 underline">
-                      → Privatlivspolitik
+                    <Link href="/privacybeleid" className="text-primary-600 hover:text-primary-700 underline">
+                      → Privacybeleid
                     </Link>
                   </li>
                   <li>
-                    <Link href="/vilkaar" className="text-primary-600 hover:text-primary-700 underline">
-                      → Vilkår & Betingelser
+                    <Link href="/voorwaarden" className="text-primary-600 hover:text-primary-700 underline">
+                      → Algemene Voorwaarden
                     </Link>
                   </li>
                 </ul>
