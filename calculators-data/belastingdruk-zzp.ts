@@ -6,7 +6,7 @@ import { CalculatorData } from '@/types/calculator'
  * Datum: 2025-10-30T15:04:21.231Z
  */
 
-export const belastingdruk_zzpCalculatorData: CalculatorData = {
+export const belastingdruk_zzp_CalculatorData: CalculatorData = {
   slug: 'belastingdruk-zzp',
 
   metadata: {

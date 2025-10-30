@@ -6,7 +6,7 @@ import { CalculatorData } from '@/types/calculator'
  * Datum: 2025-10-30T15:02:56.469Z
  */
 
-export const huis_kopen_zzpCalculatorData: CalculatorData = {
+export const huis_kopen_zzp_CalculatorData: CalculatorData = {
   slug: 'huis-kopen-zzp',
 
   metadata: {

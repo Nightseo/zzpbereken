@@ -6,7 +6,7 @@ import { CalculatorData } from '@/types/calculator'
  * Datum: 2025-10-30T15:13:51.992Z
  */
 
-export const van_zzp_naar_loondienstCalculatorData: CalculatorData = {
+export const van_zzp_naar_loondienst_CalculatorData: CalculatorData = {
   slug: 'van-zzp-naar-loondienst',
 
   metadata: {
