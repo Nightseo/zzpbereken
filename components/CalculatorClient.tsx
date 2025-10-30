@@ -21,16 +21,25 @@ export default function CalculatorClient({ html, logic, styles }: CalculatorClie
   }, [styles])
 
   useEffect(() => {
+    let script: HTMLScriptElement | null = null
+
     const timer = setTimeout(() => {
       try {
-        const scriptFunction = new Function(logic)
-        scriptFunction()
+        // Ejecutar el código en el scope global para que funciones estén disponibles para onclick
+        script = document.createElement('script')
+        script.textContent = logic
+        document.body.appendChild(script)
       } catch (error) {
         console.error('Error ejecutando lógica de calculadora:', error)
       }
     }, 100)
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      if (script && document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
+    }
   }, [logic])
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />
