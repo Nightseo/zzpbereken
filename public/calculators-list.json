@@ -1,79 +1,79 @@
 [
   {
-    "id": 46,
-    "slug": "omslagpunt-bv-eenmanszaak",
-    "keyword": "omslagpunt bv eenmanszaak berekenen",
-    "category": "Ondernemingsvorm",
-    "url": "/bereken/omslagpunt-bv-eenmanszaak"
+    "id": 1761839342,
+    "slug": "huis-kopen-zzp",
+    "keyword": "Bereken Huis Kopen ZZP",
+    "category": "Financiën",
+    "url": "/bereken/huis-kopen-zzp"
   },
   {
-    "id": 47,
-    "slug": "van-zzp-naar-loondienst",
-    "keyword": "van zzp naar loondienst berekenen",
-    "category": "Belastingen",
-    "url": "/bereken/van-zzp-naar-loondienst"
-  },
-  {
-    "id": 48,
+    "id": 1761839327,
     "slug": "belastingdruk-zzp",
-    "keyword": "belastingdruk zzp berekenen",
-    "category": "Belastingen",
+    "keyword": "Bereken belastingdruk zzp",
+    "category": "Belasting",
     "url": "/bereken/belastingdruk-zzp"
   },
   {
-    "id": 49,
+    "id": 1761839299,
     "slug": "arbeidsongeschiktheidsverzekering-zzp",
-    "keyword": "arbeidsongeschiktheidsverzekering zzp berekenen",
-    "category": "Verzekeringen",
+    "keyword": "Bereken arbeidsongeschiktheidsverzekering zzp",
+    "category": "Financiën",
     "url": "/bereken/arbeidsongeschiktheidsverzekering-zzp"
   },
   {
-    "id": 50,
-    "slug": "jaarruimte-zzp",
-    "keyword": "jaarruimte berekenen zzp",
-    "category": "Pensioen",
-    "url": "/bereken/jaarruimte-zzp"
-  },
-  {
-    "id": 40,
-    "slug": "voorrijkosten-zzp",
-    "keyword": "voorrijkosten berekenen zzp",
-    "category": "Kosten",
-    "url": "/bereken/voorrijkosten-zzp"
-  },
-  {
-    "id": 41,
-    "slug": "kinderalimentatie-zzp",
-    "keyword": "kinderalimentatie berekenen zzp",
-    "category": "Financiën",
-    "url": "/bereken/kinderalimentatie-zzp"
-  },
-  {
-    "id": 42,
-    "slug": "zakelijke-lening-zzp",
-    "keyword": "zakelijke lening zzp berekenen",
-    "category": "Financiën",
-    "url": "/bereken/zakelijke-lening-zzp"
-  },
-  {
-    "id": 43,
+    "id": 1761839282,
     "slug": "parttime-zzp",
-    "keyword": "parttime zzp berekenen",
+    "keyword": "Bereken Parttime ZZP",
     "category": "Belastingen",
     "url": "/bereken/parttime-zzp"
   },
   {
-    "id": 44,
+    "id": 1761838392,
+    "slug": "jaarruimte-zzp",
+    "keyword": "Bereken Jaarruimte voor ZZP",
+    "category": "Financiën",
+    "url": "/bereken/jaarruimte-zzp"
+  },
+  {
+    "id": 1761838392,
+    "slug": "omslagpunt-bv-eenmanszaak",
+    "keyword": "Bereken Omslagpunt BV Eenmanszaak",
+    "category": "Zakelijke Rekeningen",
+    "url": "/bereken/omslagpunt-bv-eenmanszaak"
+  },
+  {
+    "id": 1761838392,
+    "slug": "van-zzp-naar-loondienst",
+    "keyword": "Bereken van ZZP naar loondienst",
+    "category": "Belasting",
+    "url": "/bereken/van-zzp-naar-loondienst"
+  },
+  {
+    "id": 1761589652,
+    "slug": "zakelijke-lening-zzp",
+    "keyword": "Bereken Zakelijke Lening ZZP",
+    "category": "Financiën",
+    "url": "/bereken/zakelijke-lening-zzp"
+  },
+  {
+    "id": 1761589501,
+    "slug": "voorrijkosten-zzp",
+    "keyword": "Bereken Voorrijkosten ZZP",
+    "category": "Kosten",
+    "url": "/bereken/voorrijkosten-zzp"
+  },
+  {
+    "id": 1761589342,
     "slug": "stakingswinst-eenmanszaak",
-    "keyword": "stakingswinst eenmanszaak berekenen",
+    "keyword": "Bereken stakingswinst eenmanszaak",
     "category": "Belastingen",
     "url": "/bereken/stakingswinst-eenmanszaak"
   },
   {
-    "id": 45,
-    "slug": "huis-kopen-zzp",
-    "keyword": "huis kopen zzp berekenen",
-    "category": "Hypotheek",
-    "url": "/bereken/huis-kopen-zzp"
+    "id": 1761589064,
+    "slug": "kinderalimentatie-zzp",
+    "keyword": "Bereken kinderalimentatie als ZZP",
+    "category": "Financiën",
+    "url": "/bereken/kinderalimentatie-zzp"
   }
 ]

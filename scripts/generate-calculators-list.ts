@@ -1,6 +1,5 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { keywordsConfig } from './keywords-config'
 
 interface CalculatorInfo {
   id: number
@@ -8,6 +7,40 @@ interface CalculatorInfo {
   keyword: string
   category: string
   url: string
+}
+
+function extractMetadataFromFile(filePath: string, slug: string): CalculatorInfo | null {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8')
+
+    // Verificar que no es un template pendiente
+    if (content.includes('Pending OpenAI generation')) {
+      return null
+    }
+
+    // Extraer category
+    const categoryMatch = content.match(/category:\s*["']([^"']+)["']/)
+    const category = categoryMatch ? categoryMatch[1] : 'General'
+
+    // Extraer keyword del h1
+    const h1Match = content.match(/h1:\s*["']([^"']+)["']/)
+    const keyword = h1Match ? h1Match[1] : slug.replace(/-/g, ' ')
+
+    // Generar ID basado en el nombre del archivo (timestamp del archivo)
+    const stats = fs.statSync(filePath)
+    const id = Math.floor(stats.mtimeMs / 1000) // Unix timestamp en segundos
+
+    return {
+      id,
+      slug,
+      keyword,
+      category,
+      url: `/bereken/${slug}`
+    }
+  } catch (error) {
+    console.error(`Error extracting metadata from ${slug}:`, error)
+    return null
+  }
 }
 
 function generateCalculatorsList() {
@@ -28,29 +61,22 @@ function generateCalculatorsList() {
     return
   }
 
-  // Verificar cada calculadora del config
-  for (const calc of keywordsConfig) {
-    const calculatorPath = path.join(calculatorsDir, `${calc.slug}.ts`)
+  // Leer TODOS los archivos .ts en calculators-data/
+  const files = fs.readdirSync(calculatorsDir)
+  const tsFiles = files.filter(file => file.endsWith('.ts'))
 
-    if (fs.existsSync(calculatorPath)) {
-      try {
-        const fileContent = fs.readFileSync(calculatorPath, 'utf-8')
+  for (const file of tsFiles) {
+    const slug = file.replace('.ts', '')
+    const filePath = path.join(calculatorsDir, file)
 
-        // Verificar que no es un template pendiente
-        if (!fileContent.includes('Pending OpenAI generation')) {
-          availableCalculators.push({
-            id: calc.id,
-            slug: calc.slug,
-            keyword: calc.keyword,
-            category: calc.category,
-            url: calc.url
-          })
-        }
-      } catch (error) {
-        console.error(`Error reading calculator ${calc.slug}:`, error)
-      }
+    const metadata = extractMetadataFromFile(filePath, slug)
+    if (metadata) {
+      availableCalculators.push(metadata)
     }
   }
+
+  // Ordenar por ID descendente (más recientes primero)
+  availableCalculators.sort((a, b) => b.id - a.id)
 
   // Guardar en public para que sea accesible estáticamente
   const publicDir = path.join(process.cwd(), 'public')
@@ -63,6 +89,10 @@ function generateCalculatorsList() {
 
   console.log(`✅ Generated calculators list: ${availableCalculators.length} calculators`)
   console.log(`   Output: ${outputPath}`)
+  console.log(`   Latest calculators:`)
+  availableCalculators.slice(0, 6).forEach((calc, i) => {
+    console.log(`   ${i + 1}. ${calc.keyword} (${calc.slug})`)
+  })
 }
 
 // Ejecutar si se llama directamente
