@@ -61,10 +61,7 @@ export const omslagpunt_bv_eenmanszaak_CalculatorData: CalculatorData = {
                       "jaaromzet": "€120.000",
                       "kosten": "€30.000",
                       "winst": "€90.000",
-                      "aftrekposten": [
-                            "zelfstandigenaftrek",
-                            "MKB-winstvrijstelling"
-                      ]
+                      "aftrekposten": "zelfstandigenaftrek, MKB-winstvrijstelling"
                 },
                 "output": "Bij een winst boven €80.000 kan een BV voordeliger zijn.",
                 "explanation": "De belastingdruk is bij een hogere winst gunstiger in een BV door lagere vennootschapsbelasting."
@@ -76,10 +73,7 @@ export const omslagpunt_bv_eenmanszaak_CalculatorData: CalculatorData = {
                       "jaaromzet": "€200.000",
                       "kosten": "€100.000",
                       "winst": "€100.000",
-                      "aftrekposten": [
-                            "werkruimte thuis",
-                            "innovatiebox"
-                      ]
+                      "aftrekposten": "werkruimte thuis, innovatiebox"
                 },
                 "output": "Bij een winst boven €90.000 kan een BV fiscaal aantrekkelijker zijn.",
                 "explanation": "Ondanks hoge kosten kan de lagere belastingdruk in een BV gunstiger zijn."
@@ -91,9 +85,7 @@ export const omslagpunt_bv_eenmanszaak_CalculatorData: CalculatorData = {
                       "jaaromzet": "€80.000",
                       "kosten": "€20.000",
                       "winst": "€60.000",
-                      "aftrekposten": [
-                            "kleineondernemersregeling"
-                      ]
+                      "aftrekposten": "kleineondernemersregeling"
                 },
                 "output": "Onder de €70.000 winst blijft een eenmanszaak voordeliger.",
                 "explanation": "De flexibiliteit en belastingvoordelen voor kleine ondernemers zijn voordeliger bij lagere winsten."
