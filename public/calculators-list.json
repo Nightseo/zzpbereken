@@ -1,5 +1,40 @@
 [
   {
+    "id": 46,
+    "slug": "omslagpunt-bv-eenmanszaak",
+    "keyword": "omslagpunt bv eenmanszaak berekenen",
+    "category": "Ondernemingsvorm",
+    "url": "/bereken/omslagpunt-bv-eenmanszaak"
+  },
+  {
+    "id": 47,
+    "slug": "van-zzp-naar-loondienst",
+    "keyword": "van zzp naar loondienst berekenen",
+    "category": "Belastingen",
+    "url": "/bereken/van-zzp-naar-loondienst"
+  },
+  {
+    "id": 48,
+    "slug": "belastingdruk-zzp",
+    "keyword": "belastingdruk zzp berekenen",
+    "category": "Belastingen",
+    "url": "/bereken/belastingdruk-zzp"
+  },
+  {
+    "id": 49,
+    "slug": "arbeidsongeschiktheidsverzekering-zzp",
+    "keyword": "arbeidsongeschiktheidsverzekering zzp berekenen",
+    "category": "Verzekeringen",
+    "url": "/bereken/arbeidsongeschiktheidsverzekering-zzp"
+  },
+  {
+    "id": 50,
+    "slug": "jaarruimte-zzp",
+    "keyword": "jaarruimte berekenen zzp",
+    "category": "Pensioen",
+    "url": "/bereken/jaarruimte-zzp"
+  },
+  {
     "id": 40,
     "slug": "voorrijkosten-zzp",
     "keyword": "voorrijkosten berekenen zzp",
@@ -33,5 +68,12 @@
     "keyword": "stakingswinst eenmanszaak berekenen",
     "category": "Belastingen",
     "url": "/bereken/stakingswinst-eenmanszaak"
+  },
+  {
+    "id": 45,
+    "slug": "huis-kopen-zzp",
+    "keyword": "huis kopen zzp berekenen",
+    "category": "Hypotheek",
+    "url": "/bereken/huis-kopen-zzp"
   }
 ]

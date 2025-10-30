@@ -290,7 +290,7 @@ export const keywordsConfig: KeywordConfig[] = [
     category: 'Ondernemingsvorm'
   },
   {
-    id: 23,
+    id: 46,
     url: '/bereken/omslagpunt-bv-eenmanszaak',
     slug: 'omslagpunt-bv-eenmanszaak',
     keyword: 'omslagpunt bv eenmanszaak berekenen',
@@ -422,7 +422,7 @@ export const keywordsConfig: KeywordConfig[] = [
     category: 'Omzet'
   },
   {
-    id: 34,
+    id: 47,
     url: '/bereken/van-zzp-naar-loondienst',
     slug: 'van-zzp-naar-loondienst',
     keyword: 'van zzp naar loondienst berekenen',
@@ -458,7 +458,7 @@ export const keywordsConfig: KeywordConfig[] = [
     category: 'Kosten'
   },
   {
-    id: 37,
+    id: 48,
     url: '/bereken/belastingdruk-zzp',
     slug: 'belastingdruk-zzp',
     keyword: 'belastingdruk zzp berekenen',
@@ -470,7 +470,7 @@ export const keywordsConfig: KeywordConfig[] = [
     category: 'Belastingen'
   },
   {
-    id: 38,
+    id: 49,
     url: '/bereken/arbeidsongeschiktheidsverzekering-zzp',
     slug: 'arbeidsongeschiktheidsverzekering-zzp',
     keyword: 'arbeidsongeschiktheidsverzekering zzp berekenen',
@@ -482,7 +482,7 @@ export const keywordsConfig: KeywordConfig[] = [
     category: 'Verzekeringen'
   },
   {
-    id: 39,
+    id: 50,
     url: '/bereken/jaarruimte-zzp',
     slug: 'jaarruimte-zzp',
     keyword: 'jaarruimte berekenen zzp',
