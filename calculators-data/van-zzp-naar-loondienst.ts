@@ -15,7 +15,7 @@ export const van_zzp_naar_loondienst_CalculatorData: CalculatorData = {
     excerpt: "Bereken eenvoudig het verschil tussen werken als ZZP'er en in loondienst. Inclusief belastingen, zakelijke kosten, vakantiegeld en pensioenopbouw volgens de Nederlandse wetgeving.",
     canonical: 'https://zzpbereken.com/bereken/van-zzp-naar-loondienst',
     keywords: ["van zzp naar loondienst berekenen"],
-    category: "Belastingen",
+    category: "Belasting",
     h1: "Bereken van ZZP naar loondienst",
     h2: "Van ZZP naar loondienst Calculator"
   },

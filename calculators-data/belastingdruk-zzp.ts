@@ -15,7 +15,7 @@ export const belastingdruk_zzp_CalculatorData: CalculatorData = {
     excerpt: "Bereken snel en accuraat je belastingdruk als ZZP'er. Deze calculator houdt rekening met alle relevante aftrekposten en toont een gedetailleerde breakdown van je belastingplicht volgens de Nederlandse wetgeving 2025.",
     canonical: 'https://zzpbereken.com/bereken/belastingdruk-zzp',
     keywords: ["belastingdruk zzp berekenen"],
-    category: "Belastingen",
+    category: "Belasting",
     h1: "Bereken belastingdruk zzp",
     h2: "Belastingdruk zzp Calculator"
   },

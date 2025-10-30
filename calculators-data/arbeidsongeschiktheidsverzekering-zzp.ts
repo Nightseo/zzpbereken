@@ -15,7 +15,7 @@ export const arbeidsongeschiktheidsverzekering_zzp_CalculatorData: CalculatorDat
     excerpt: "Bereken snel en eenvoudig de premie voor je arbeidsongeschiktheidsverzekering als ZZP'er. Krijg direct inzicht in je maandpremie, jaarpremie en verzekerd bedrag op basis van jouw persoonlijke situatie.",
     canonical: 'https://zzpbereken.com/bereken/arbeidsongeschiktheidsverzekering-zzp',
     keywords: ["arbeidsongeschiktheidsverzekering zzp berekenen"],
-    category: "Verzekeringen",
+    category: "Financiën",
     h1: "Bereken arbeidsongeschiktheidsverzekering zzp",
     h2: "Arbeidsongeschiktheidsverzekering zzp Calculator"
   },

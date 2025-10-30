@@ -15,7 +15,7 @@ export const omslagpunt_bv_eenmanszaak_CalculatorData: CalculatorData = {
     excerpt: "Ontdek met deze calculator het omslagpunt tussen een BV en eenmanszaak. Bereken uw netto inkomen onder beide ondernemingsvormen en zie direct welke optie het meest voordelig is op basis van actuele belastingtarieven 2025.",
     canonical: 'https://zzpbereken.com/bereken/omslagpunt-bv-eenmanszaak',
     keywords: ["omslagpunt bv eenmanszaak berekenen"],
-    category: "Ondernemingsvorm",
+    category: "Zakelijke Rekeningen",
     h1: "Bereken Omslagpunt BV Eenmanszaak",
     h2: "Omslagpunt BV Eenmanszaak Calculator"
   },

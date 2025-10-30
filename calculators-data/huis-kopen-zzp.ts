@@ -15,7 +15,7 @@ export const huis_kopen_zzp_CalculatorData: CalculatorData = {
     excerpt: "Bereken snel en eenvoudig hoeveel hypotheek je als ZZP'er kunt krijgen. Deze calculator houdt rekening met de strengere eisen voor zelfstandigen en berekent je maximale leencapaciteit.",
     canonical: 'https://zzpbereken.com/bereken/huis-kopen-zzp',
     keywords: ["huis kopen zzp berekenen"],
-    category: "Hypotheek",
+    category: "Financiën",
     h1: "Bereken Huis Kopen ZZP",
     h2: "Huis Kopen ZZP Calculator"
   },

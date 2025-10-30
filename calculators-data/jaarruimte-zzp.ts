@@ -15,7 +15,7 @@ export const jaarruimte_zzp_CalculatorData: CalculatorData = {
     excerpt: "Bereken eenvoudig je jaarruimte voor pensioenopbouw als ZZP'er. Ontdek hoeveel je fiscaal voordelig kunt opbouwen via een lijfrente en hoeveel belasting je bespaart.",
     canonical: 'https://zzpbereken.com/bereken/jaarruimte-zzp',
     keywords: ["jaarruimte berekenen zzp"],
-    category: "Pensioen",
+    category: "Financiën",
     h1: "Bereken Jaarruimte voor ZZP'ers",
     h2: "Jaarruimte Berekenen ZZP Calculator"
   },
