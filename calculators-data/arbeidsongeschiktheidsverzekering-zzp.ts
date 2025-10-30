@@ -6,7 +6,7 @@ import { CalculatorData } from '@/types/calculator'
  * Datum: 2025-10-30T15:15:23.084Z
  */
 
-export const arbeidsongeschiktheidsverzekering_zzp_CalculatorData: CalculatorData = {
+export const arbeidsongeschiktheidsverzekering_zzpCalculatorData: CalculatorData = {
   slug: 'arbeidsongeschiktheidsverzekering-zzp',
 
   metadata: {

@@ -6,7 +6,7 @@ import { CalculatorData } from '@/types/calculator'
  * Datum: 2025-10-30T15:17:00.682Z
  */
 
-export const omslagpunt_bv_eenmanszaak_CalculatorData: CalculatorData = {
+export const omslagpunt_bv_eenmanszaakCalculatorData: CalculatorData = {
   slug: 'omslagpunt-bv-eenmanszaak',
 
   metadata: {
